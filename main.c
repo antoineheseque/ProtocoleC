@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "file.c";
+#include "file.c"
 int main(int argc, char *argv[]) {
 
 	printf("+----------------------------+\n| \t  Protocole C\t     |\n+----------------------------+\n");
