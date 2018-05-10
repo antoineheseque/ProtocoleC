@@ -1,0 +1,5 @@
+﻿  file.c
+d:\documents\protocolec\protocolec\file.c(38): warning C4033: 'readFile' doit retourner une valeur
+d:\documents\protocolec\protocolec\file.c(44): warning C4267: 'fonction' : conversion de 'size_t' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\file.c(53): warning C4716: 'readFile' : doit retourner une valeur
+  ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe
