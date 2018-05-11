@@ -23,14 +23,13 @@
 #include "structs.h"
 #endif
 
-Scene readFile(char* name) {
+Scene readFile() {
 	//Scene scene;
 	//Camera cam;
 	Object * objects = malloc(sizeof(Object));
 	FILE *fp;
 	errno_t err;
 
-	// Open for read (will fail if file "crt_fopen_s.c" does not exist)  
 	err = fopen_s(&fp, "main.scene", "r");
 	if (err != 0)
 	{
