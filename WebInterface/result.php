@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Protocole C</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 	<?php
@@ -10,6 +11,7 @@
 		else
 			echo "Erreur dans le programme";
 	?>
-	
+	<br>
+	<div class="title"><a href="index.php">Retour à l'accueil</a></div>
 </body>
 </html>

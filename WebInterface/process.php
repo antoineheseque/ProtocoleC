@@ -18,10 +18,11 @@ if(isset($_POST['submit'])){
 <html>
 <head>
 	<title>Protocole C</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 	<div class="title">Default WebPage for Protocole C.</div>
-	<div class="content">
+	<div class="content special">
 		<form action="./process2.php" method="post">
 			<fieldset>
 				<legend>Objet(s)</legend>
