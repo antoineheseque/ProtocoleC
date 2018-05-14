@@ -42,7 +42,13 @@ Scene readFile() {
 	int lineCounter = 0;
 	while (fgets(line, line_size, fp) != NULL) {
 		lineCounter++;
-		printf(line);
+		if (line == 1) {
+
+		}
+		else if(line == 2) {
+
+		}
+		printf("%d: %s", lineCounter, line);
 	}
 	free(line);    // dont forget to free heap memory
 
