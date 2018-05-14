@@ -1,19 +1,19 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * LECTURE D'UN FICHIER ET RENVOI D'UNE SCENE CONTENANT 
+ * LECTURE D'UN FICHIER ET RENVOI D'UNE SCENE CONTENANT
  * TOUT LES PARAMETRES SELECTIONNES.
- * 
+ *
  * MODELE DU FICHIER :
- * x;y;z #Position de la caméra
- * x;y;z #Orientation de la caméra
+ * x;y;z #Position de la camï¿½ra
+ * x;y;z #Orientation de la camï¿½ra
  * 1080 (longueur de l'image)
  * 720 (largueur de l'image)
  * formedel'objet1;centerposx;centerposy;centerposy;dimensionsx;dimensionsx;dimensionsx
  * formede2'objet1;centerposx;centerposy;centerposy;dimensionsx;dimensionsx;dimensionsx
  * formede3'objet1;centerposx;centerposy;centerposy;dimensionsx;dimensionsx;dimensionsx
  * ...
- * 
- * 
- * 
+ *
+ *
+ *
  * * * * * * * * * * * * * * * * * * * * * * * * */
 #include <stdlib.h>
 #include <stdio.h>
@@ -25,7 +25,7 @@
 
 Scene readFile() {
 	//Scene scene;
-	//Camera cam;
+	Camera cam;
 	Object * objects = malloc(sizeof(Object));
 	FILE *fp;
 	errno_t err;
@@ -43,10 +43,22 @@ Scene readFile() {
 	while (fgets(line, line_size, fp) != NULL) {
 		lineCounter++;
 		if (line == 1) {
-
+			fscanf(fichier, "%d;%d;%d", cam.position.x, cam.position.y, cam.position.z);
 		}
 		else if(line == 2) {
-
+			fscanf(fichier, "%d;%d;%d", cam.direction.x, cam.direction.y, cam.direction.z);
+		}
+		else if(line == 3) {
+			fscanf(fichier, "%d", cam.screenWidth);
+		}
+		else if(line == 4) {
+			fscanf(fichier, "%d", cam.screenHeight);
+		}
+		else if(line == 5) {
+			fscanf(fichier, "%d", cam.screenHeight);
+		}
+		else if(line == 6) {
+			fscanf(fichier, "%d", cam.screenHeight);
 		}
 		printf("%d: %s", lineCounter, line);
 	}

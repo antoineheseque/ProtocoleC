@@ -22,6 +22,7 @@ typedef enum objectType {
 
 typedef struct object {
 	Vector3 position;
+	Vector3 size;
 	ObjectType type;
 } Object;
 
