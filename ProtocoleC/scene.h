@@ -1,6 +1,5 @@
-#pragma once
-#include "camera.h"
-#include "objects.h"
+#ifndef DEF_SCENE
+#define DEF_SCENE
 
 typedef struct scene {
 	Camera camera;
@@ -9,4 +8,7 @@ typedef struct scene {
 	Object * object;
 } Scene;
 
+
 void debugScene(Scene scene);
+
+#endif

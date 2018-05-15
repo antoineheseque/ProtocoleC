@@ -1,5 +1,5 @@
-#pragma once
-#include "math.h"
+#ifndef DEF_OBJECTS
+#define DEF_OBJECTS
 
 typedef enum objectType {
 	Sphere,
@@ -13,3 +13,5 @@ typedef struct object {
 } Object;
 
 char * getObjectType(ObjectType type);
+
+#endif

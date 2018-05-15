@@ -1,4 +1,5 @@
-#include "math.h"
+#include "header.h"
+#include "mathC.h"
 
 int minValue(int a, int b) {
 	if (a > b)

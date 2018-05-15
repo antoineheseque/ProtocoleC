@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DEF_MATH
+#define DEF_MATH
 
 typedef struct vector3 {
 	float x;
@@ -12,3 +13,5 @@ Vector3 AddVector(Vector3 a, Vector3 b);
 Vector3 SubVector(Vector3 a, Vector3 b);
 Vector3 ProductVector(Vector3 a, Vector3 b);
 int ScalarVector(Vector3 a, Vector3 b);
+
+#endif

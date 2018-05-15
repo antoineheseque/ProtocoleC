@@ -1,4 +1,6 @@
-#pragma once
-#include "scene.h"
+#ifndef DEF_FILE
+#define DEF_FILE
 
 Scene readFile();
+
+#endif

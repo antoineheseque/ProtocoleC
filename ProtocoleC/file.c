@@ -13,9 +13,10 @@
  * ...
  * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "scene.h"
+#include "header.h"
+#include "file.h"
+#include "camera.h"
+#include "objects.h"
 
 Scene readFile() {
 	Scene scene;

@@ -128,8 +128,9 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="file.h" />
-    <ClInclude Include="math.c" />
-    <ClInclude Include="math.h" />
+    <ClInclude Include="header.h" />
+    <ClInclude Include="mathC.c" />
+    <ClInclude Include="mathC.h" />
     <ClInclude Include="objects.h" />
     <ClInclude Include="scene.h" />
   </ItemGroup>

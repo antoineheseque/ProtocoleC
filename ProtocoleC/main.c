@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "scene.h"
+#include "header.h"
+#include "file.h"
 
 int main(int argc, char *argv[]) {
 

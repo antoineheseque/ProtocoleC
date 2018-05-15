@@ -1,3 +1,4 @@
+#include "header.h"
 #include "color.h"
 
 Color AddColor(Color a, Color b) {

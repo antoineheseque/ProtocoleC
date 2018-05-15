@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "header.h"
 #include "scene.h"
+#include "mathC.h"
 
 void debugScene(Scene scene) {
 	printf("\n-------------------\n");
