@@ -37,6 +37,10 @@ input[type="submit"]{
 	margin-top: 15px;
 }
 
+input[type="number"]{
+	color: black;
+}
+
 fieldset{
 	padding: 15px; 
 }
