@@ -1,5 +1,6 @@
 ﻿  file.c
-d:\documents\protocolec\protocolec\file.c(37): warning C4033: 'readFile' doit retourner une valeur
-d:\documents\protocolec\protocolec\file.c(43): warning C4267: 'fonction' : conversion de 'size_t' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\file.c(53): warning C4716: 'readFile' : doit retourner une valeur
+d:\documents\protocolec\protocolec\file.c(35): warning C4033: 'readFile' doit retourner une valeur
+d:\documents\protocolec\protocolec\file.c(47): warning C4013: 'debugScene' non défini(e) ; extern retournant int pris par défaut
+d:\documents\protocolec\protocolec\file.c(43): warning C4477: 'fscanf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 1 est de type 'ObjectType *'
+d:\documents\protocolec\protocolec\file.c(49): warning C4716: 'readFile' : doit retourner une valeur
   ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe

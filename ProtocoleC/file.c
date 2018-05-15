@@ -24,12 +24,12 @@
 #endif
 
 Scene readFile() {
-	//Scene scene;
+	Scene scene;
 	Camera cam;
 	Object * objects = malloc(sizeof(Object));
 	FILE * fichier = fopen("main.scene", "r");
 
-	if (fichier != NULL)
+	if (fichier == NULL)
 	{
 		printf("Erreur lors de l'ouverture du fichier.\n");
 		return;
@@ -43,7 +43,7 @@ Scene readFile() {
 		fscanf(fichier, "%s;%f;%f;%f;%f;%f;%f", &objects->type, &objects->position.x, &objects->position.y, &objects->position.z, &objects->size.x, &objects->size.y, &objects->size.z);
 	}
 
-	//scene.camera = cam;
-	//debugScene(scene); // Check in console if scene is successfully created from file data.
-	fclose(fp);
+	scene.camera = cam;
+	debugScene(scene); // Check in console if scene is successfully created from file data.
+	fclose(fichier);
 }
