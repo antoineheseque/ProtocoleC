@@ -40,7 +40,7 @@ Scene readFile() {
 		fscanf(fichier, "%f;%f;%f", &cam.direction.x, &cam.direction.y, &cam.direction.z);
 		fscanf(fichier, "%d", &cam.screenWidth);
 		fscanf(fichier, "%d", &cam.screenHeight);
-		fscanf(fichier, "%s;%f;%f;%f;%f;%f;%f", &objects.type, &objects.position.x, &objects.position.y, &objects.position.z, &objects.size.x, &objects.size.y, &objects.size.z);
+		fscanf(fichier, "%s;%f;%f;%f;%f;%f;%f", &objects->type, &objects->position.x, &objects->position.y, &objects->position.z, &objects->size.x, &objects->size.y, &objects->size.z);
 	}
 
 	//scene.camera = cam;
