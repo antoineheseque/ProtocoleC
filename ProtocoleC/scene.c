@@ -1,7 +1,6 @@
-#ifndef MY_HEADER_FILE_
-#define MY_HEADER_FILE_
-#include "structs.h"
-#endif
+#include <stdio.h>
+#include <stdlib.h>
+#include "scene.h"
 
 void debugScene(Scene scene) {
 	printf("\n-------------------\n");

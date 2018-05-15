@@ -119,13 +119,19 @@
     <ClCompile Include="camera.c" />
     <ClCompile Include="color.c" />
     <ClCompile Include="file.c" />
+    <ClCompile Include="image.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="objects.c" />
     <ClCompile Include="scene.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="color.h" />
+    <ClInclude Include="file.h" />
     <ClInclude Include="math.c" />
-    <ClInclude Include="structs.h" />
+    <ClInclude Include="math.h" />
+    <ClInclude Include="objects.h" />
+    <ClInclude Include="scene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="main.scene" />

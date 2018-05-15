@@ -1,7 +1,4 @@
-#ifndef MY_HEADER_FILE_
-#define MY_HEADER_FILE_
-#include "structs.h"
-#endif
+#include "objects.h"
 
 char * getObjectType(ObjectType type) {
 	switch (type) {
@@ -10,5 +7,9 @@ char * getObjectType(ObjectType type) {
 			break;
 		case Cube:
 			return "Cube";
+			break;
+		default:
+			return "unknown";
+			break;
 	}
 }

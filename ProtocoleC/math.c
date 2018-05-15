@@ -1,7 +1,4 @@
-#ifndef MY_HEADER_FILE_
-#define MY_HEADER_FILE_
-#include "structs.h"
-#endif
+#include "math.h"
 
 int minValue(int a, int b) {
 	if (a > b)
@@ -24,7 +21,7 @@ Vector3 AddVector(Vector3 a, Vector3 b) {
 	return vector;
 }
 
-Vector3 subVector(Vector3 a, Vector3 b) {
+Vector3 SubVector(Vector3 a, Vector3 b) {
 	Vector3 vector;
 	vector.x = a.x - b.x;
 	vector.y = a.y - b.y;
@@ -33,7 +30,7 @@ Vector3 subVector(Vector3 a, Vector3 b) {
 	return vector;
 }
 
-Vector3 productVector(Vector3 a, Vector3 b) {
+Vector3 ProductVector(Vector3 a, Vector3 b) {
 	Vector3 vector;
 	vector.x = (a.y*b.z) - (a.z*b.y);
 	vector.y = (a.z*b.x) - (a.x*b.z);
@@ -42,7 +39,7 @@ Vector3 productVector(Vector3 a, Vector3 b) {
 	return vector;
 }
 
-int scalarVector(Vector3 a, Vector3 b) {
+int ScalarVector(Vector3 a, Vector3 b) {
 	int scalar;
 	scalar = a.x*b.x + a.y*b.y + a.z*b.z;
 

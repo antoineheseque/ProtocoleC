@@ -1,6 +1,6 @@
-﻿  file.c
-d:\documents\protocolec\protocolec\file.c(35): warning C4033: 'readFile' doit retourner une valeur
-d:\documents\protocolec\protocolec\file.c(47): warning C4013: 'debugScene' non défini(e) ; extern retournant int pris par défaut
-d:\documents\protocolec\protocolec\file.c(43): warning C4477: 'fscanf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 1 est de type 'ObjectType *'
-d:\documents\protocolec\protocolec\file.c(49): warning C4716: 'readFile' : doit retourner une valeur
-  ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe
+﻿  main.c
+d:\documents\protocolec\protocolec\main.c(9): warning C4013: 'readFile' non défini(e) ; extern retournant int pris par défaut
+d:\documents\protocolec\protocolec\main.c(9): error C2440: '=' : impossible de convertir de 'int' en 'Scene'
+  file.c
+d:\documents\protocolec\protocolec\file.c(32): warning C4477: 'fscanf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 1 est de type 'ObjectType *'
+  Génération de code en cours...
