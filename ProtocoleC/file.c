@@ -43,22 +43,19 @@ Scene readFile() {
 	while (fgets(line, line_size, fp) != NULL) {
 		lineCounter++;
 		if (line == 1) {
-			fscanf(fichier, "%d;%d;%d", cam.position.x, cam.position.y, cam.position.z);
+			fscanf(err, "%f;%f;%f", cam.position.x, cam.position.y, cam.position.z);
 		}
 		else if(line == 2) {
-			fscanf(fichier, "%d;%d;%d", cam.direction.x, cam.direction.y, cam.direction.z);
+			fscanf(err, "%f;%f;%f", cam.direction.x, cam.direction.y, cam.direction.z);
 		}
 		else if(line == 3) {
-			fscanf(fichier, "%d", cam.screenWidth);
+			fscanf(err, "%d", cam.screenWidth);
 		}
 		else if(line == 4) {
-			fscanf(fichier, "%d", cam.screenHeight);
+			fscanf(err, "%d", cam.screenHeight);
 		}
 		else if(line == 5) {
-			fscanf(fichier, "%d", cam.screenHeight);
-		}
-		else if(line == 6) {
-			fscanf(fichier, "%d", cam.screenHeight);
+			fscanf(err, "%s;%f;%f;%f;%f;%f;%f", objects.type, objects.position.x, objects.position.y, objects.position.z, objects.size.x, objects.size.y, objects.size.z);
 		}
 		printf("%d: %s", lineCounter, line);
 	}

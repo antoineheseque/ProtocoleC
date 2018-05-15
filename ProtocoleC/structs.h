@@ -24,7 +24,7 @@ typedef struct object {
 	Vector3 position;
 	Vector3 size;
 	ObjectType type;
-} Object;
+	} Object;
 
 typedef struct scene {
 	Camera camera;
