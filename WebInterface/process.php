@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
 	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-	<div class="title">Default WebPage for Protocole C.</div>
+	<div class="title">Protocole C: Système de Ray-Tracing.</div>
 	<div class="content special">
 		<form action="./process2.php" method="post">
 			<fieldset>
