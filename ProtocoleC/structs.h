@@ -26,6 +26,11 @@ typedef struct object {
 	ObjectType type;
 	} Object;
 
+typedef struct ray {
+	Vector3 position;
+	Vector3 direction;
+} Ray;
+
 typedef struct scene {
 	Camera camera;
 
