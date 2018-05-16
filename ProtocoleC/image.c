@@ -7,7 +7,7 @@
 
 void exportIMG(Camera camera, Color * color)
 {
-	//width, height, and bitcount are the key factors:
+	//width, height, and bitcount are the key factors :
 	int32_t width = camera.screenWidth;
 	int32_t height = camera.screenHeight;
 	uint16_t bitcount = 24; // 24-bit bitmap
