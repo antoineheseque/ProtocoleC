@@ -32,6 +32,7 @@ if(isset($_POST['submit'])){
 				<select name="objType">
 				  <option value="cube">cube</option>
 				  <option value="sphere">sphere</option>
+				  <option value="plan">plan</option>
 				</select>
 				Position: <input type="number" name="objX" min="-100" max="100"> <input type="number" name="objY" min="-100" max="100"> <input type="number" name="objZ" min="-100" max="100">
 				Taille: <input type="number" name="objSX" min="-100" max="100"> <input type="number" name="objSY" min="-100" max="100"> <input type="number" name="objSZ" min="-100" max="100">
