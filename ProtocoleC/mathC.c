@@ -26,7 +26,7 @@ Vector3 SubVector(Vector3 a, Vector3 b) {
 	vector.x = a.x - b.x;
 	vector.y = a.y - b.y;
 	vector.z = a.z - b.z;
-	
+
 	return vector;
 }
 
@@ -44,4 +44,11 @@ int ScalarVector(Vector3 a, Vector3 b) {
 	scalar = a.x*b.x + a.y*b.y + a.z*b.z;
 
 	return scalar;
+}
+
+float distVector(Vector3 a, Vector3 b){
+	float distance;
+	distance = pow(b.x-a.x, 2) + pow(b.y-a.y, 2) + pow(b.z-a.z, 2)
+	distance = sqrt(distance);
+	return distance;
 }
