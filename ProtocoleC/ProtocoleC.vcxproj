@@ -80,7 +80,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
@@ -123,15 +123,16 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="objects.c" />
     <ClCompile Include="scene.c" />
+    <ClCompile Include="ray.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="file.h" />
-    <ClInclude Include="header.h" />
     <ClInclude Include="mathC.c" />
     <ClInclude Include="mathC.h" />
     <ClInclude Include="objects.h" />
+    <ClInclude Include="ray.h" />
     <ClInclude Include="scene.h" />
   </ItemGroup>
   <ItemGroup>

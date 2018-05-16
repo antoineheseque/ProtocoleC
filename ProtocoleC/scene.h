@@ -1,6 +1,9 @@
 #ifndef DEF_SCENE
 #define DEF_SCENE
 
+#include "camera.h"
+#include "objects.h"
+
 typedef struct scene {
 	Camera camera;
 
