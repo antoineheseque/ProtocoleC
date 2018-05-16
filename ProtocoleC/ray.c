@@ -3,9 +3,12 @@
 
 Ray getRayFromPixel(Camera cam, int x, int y) {
 	Ray ray;
-	Vector3 dir;
-	dir.x = 5;
-	ray.direction = dir;
+	// Position
+	Vector3 pos = cam.position;
+	ray.position = pos;
+
+	// Direction
+
 
 	// Code pour tracer le rayon
 

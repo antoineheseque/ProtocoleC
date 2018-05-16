@@ -71,4 +71,9 @@
       <Filter>Fichiers de ressources</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="test.bmp">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
