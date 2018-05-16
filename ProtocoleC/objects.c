@@ -1,3 +1,4 @@
+#include "header.h"
 #include "objects.h"
 
 char * getObjectType(ObjectType type) {

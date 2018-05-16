@@ -1,3 +1,4 @@
+#include "header.h"
 #include "mathC.h"
 
 int minValue(int a, int b) {

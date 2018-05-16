@@ -1,8 +1,6 @@
 #ifndef DEF_OBJECTS
 #define DEF_OBJECTS
 
-#include "mathC.h"
-
 typedef enum objectType {
 	Sphere,
 	Cube

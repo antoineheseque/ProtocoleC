@@ -1,5 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "header.h"
 #include "scene.h"
 #include "mathC.h"
 

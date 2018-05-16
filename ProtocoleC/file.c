@@ -13,8 +13,7 @@
  * ...
  * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "header.h"
 #include "file.h"
 #include "camera.h"
 #include "objects.h"
@@ -27,11 +26,11 @@ Scene readFile() {
 
 	if (fichier != NULL)
 	{
-		fscanf(fichier, "%d;%d;%d", &cam.position.x, &cam.position.y, &cam.position.z);
-		fscanf(fichier, "%d;%d;%d", &cam.direction.x, &cam.direction.y, &cam.direction.z);
+		fscanf(fichier, "%f;%f;%f", &cam.position.x, &cam.position.y, &cam.position.z);
+		fscanf(fichier, "%f;%f;%f", &cam.direction.x, &cam.direction.y, &cam.direction.z);
 		fscanf(fichier, "%d", &cam.screenWidth);
 		fscanf(fichier, "%d", &cam.screenHeight);
-		fscanf(fichier, "%s;%d;%d;%d;%d;%d;%d", &objects->type, &objects->position.x, &objects->position.y, &objects->position.z, &objects->size.x, &objects->size.y, &objects->size.z);
+		fscanf(fichier, "%s;%f;%f;%f;%f;%f;%f", &objects->type, &objects->position.x, &objects->position.y, &objects->position.z, &objects->size.x, &objects->size.y, &objects->size.z);
 	
 		scene.camera = cam;
 		scene.objectsCount = 1;

@@ -1,12 +1,10 @@
 #ifndef DEF_MATH
 #define DEF_MATH
 
-#include "mathC.h"
-
 typedef struct vector3 {
-	int x;
-	int y;
-	int z;
+	float x;
+	float y;
+	float z;
 } Vector3;
 
 int minValue(int a, int b);

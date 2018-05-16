@@ -36,9 +36,6 @@
     <ClCompile Include="image.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="ray.c">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mathC.c">
@@ -53,6 +50,9 @@
     <ClInclude Include="file.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="header.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
     <ClInclude Include="mathC.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -60,9 +60,6 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="scene.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="ray.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
