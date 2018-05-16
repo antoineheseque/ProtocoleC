@@ -7,7 +7,7 @@
 <body>
 	<?php
 		if(file_exists("result.png"))
-			echo "<img src=\"result.png\">";
+			echo "<img src=\"../ProtocoleC/test.bpm\">";
 		else
 			echo "Erreur dans le programme";
 	?>
