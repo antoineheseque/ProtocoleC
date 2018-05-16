@@ -2,14 +2,17 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-void main()
+#include "camera.h"
+#include "color.h"
+
+void exportIMG(Camera camera, Color * color)
 {
 	//width, height, and bitcount are the key factors:
-	int32_t width = 1280;
-	int32_t height = 720;
-	uint16_t bitcount = 24;//<- 24-bit bitmap
+	int32_t width = camera.screenWidth;
+	int32_t height = camera.screenHeight;
+	uint16_t bitcount = 24; // 24-bit bitmap
 
-						   //take padding in to account
+							//take padding in to account
 	int width_in_bytes = ((width * bitcount + 31) / 32) * 4;
 
 	//total image size in bytes, not including header
@@ -18,7 +21,7 @@ void main()
 	//this value is always 40, it's the sizeof(BITMAPINFOHEADER)
 	const uint32_t biSize = 40;
 
-	//bitmap bits start after headerfile, 
+	//bitmap bits start after headerfile,
 	//this is sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER)
 	const uint32_t bfOffBits = 54;
 
@@ -44,16 +47,18 @@ void main()
 
 	//prepare pixel data:
 	unsigned char* buf = malloc(imagesize);
+	int u = 0;
 	for (int row = height - 1; row >= 0; row--)
 	{
 		for (int col = 0; col < width; col++)
 		{
-			buf[row * width_in_bytes + col * 3 + 0] = 255;//blue
-			buf[row * width_in_bytes + col * 3 + 1] = 0;//green
-			buf[row * width_in_bytes + col * 3 + 2] = 0;//red
+			buf[row * width_in_bytes + col * 3 + 0] = color[u].b;//blue
+			buf[row * width_in_bytes + col * 3 + 1] = color[u].g;//green
+			buf[row * width_in_bytes + col * 3 + 2] = color[u].r;//red
+			u++;
 		}
 	}
-
+	u = 0;
 	FILE *fout = fopen("test.bmp", "wb");
 	fwrite(header, 1, 54, fout);
 	fwrite((char*)buf, 1, imagesize, fout);
