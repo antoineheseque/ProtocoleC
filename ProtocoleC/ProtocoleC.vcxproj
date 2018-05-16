@@ -138,6 +138,9 @@
   <ItemGroup>
     <None Include="main.scene" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="test.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

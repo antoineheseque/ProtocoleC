@@ -32,7 +32,7 @@ Scene readFile() {
 		fscanf(fichier, "%d", &cam.screenWidth);
 		fscanf(fichier, "%d", &cam.screenHeight);
 		fscanf(fichier, "%s;%d;%d;%d;%d;%d;%d", &objects->type, &objects->position.x, &objects->position.y, &objects->position.z, &objects->size.x, &objects->size.y, &objects->size.z);
-	
+
 		scene.camera = cam;
 		scene.objectsCount = 1;
 		scene.object = objects;
