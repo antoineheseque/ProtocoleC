@@ -2,4 +2,5 @@
 d:\documents\protocolec\protocolec\ray.c(4): warning C4100: 'y' : paramètre formel non référencé
 d:\documents\protocolec\protocolec\ray.c(4): warning C4100: 'x' : paramètre formel non référencé
 d:\documents\protocolec\protocolec\ray.c(4): warning C4100: 'cam' : paramètre formel non référencé
-d:\documents\protocolec\protocolec\ray.c(9): error C4700: variable locale 'ray' non initialisée utilisée
+  LINK : D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+  ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe
