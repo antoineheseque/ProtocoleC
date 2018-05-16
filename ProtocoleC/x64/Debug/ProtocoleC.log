@@ -1,7 +1,13 @@
-﻿  main.c
-d:\documents\protocolec\protocolec\mathc.c(56): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-d:\documents\protocolec\protocolec\mathc.c(57): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-d:\documents\protocolec\protocolec\main.c(57): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
-d:\documents\protocolec\protocolec\main.c(9): warning C4100: 'argv' : paramètre formel non référencé
-d:\documents\protocolec\protocolec\main.c(9): warning C4100: 'argc' : paramètre formel non référencé
+﻿  objects.c
+d:\documents\protocolec\protocolec\objects.c(8): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\objects.c(9): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\objects.c(10): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\objects.c(11): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\objects.c(7): warning C4101: 'z' : variable locale non référencée
+d:\documents\protocolec\protocolec\objects.c(7): warning C4101: 'y' : variable locale non référencée
+d:\documents\protocolec\protocolec\objects.c(7): warning C4101: 'x' : variable locale non référencée
+d:\documents\protocolec\protocolec\objects.c(33): warning C4013: 'printf' non défini(e) ; extern retournant int pris par défaut
+  camera.c
+  Génération de code en cours...
+d:\documents\protocolec\protocolec\objects.c(72): warning C4701: variable locale 'inter' potentiellement non initialisée utilisée
   ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe

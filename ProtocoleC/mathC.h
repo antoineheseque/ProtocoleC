@@ -4,9 +4,9 @@
 #include "mathC.h"
 
 typedef struct vector3 {
-	int x;
-	int y;
-	int z;
+	double x;
+	double y;
+	double z;
 
 	int empty;
 } Vector3;

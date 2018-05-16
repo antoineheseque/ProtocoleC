@@ -20,33 +20,39 @@ int main(int argc, char *argv[]) {
 		for (int x = 0; x < scene.camera.screenWidth; x++) {
 			Color pixelColor;
 			Ray ray = getRayFromPixel(scene.camera, x, y);
+			//printf("%.10f %0.10f %.10f", ray.direction.x, ray.direction.y, ray.direction.z);
+			//printf("%.10f %.10f %.10f", scene.camera.position.x, scene.camera.position.y, scene.camera.position.z);
 
 			Vector3 intersection;
 			intersection.empty = 1;
 
-			for (int i = 0; i < scene.objectsCount; i++) {
+			Vector3 rayon = { 0, 1, 10 };
+			Vector3 pos = { 0, 1, 5 };
+			intersection = CollideWithSphere(ray, pos, 2);
+			//printf("%.10f %.10f %.10f", intersection.x, intersection.y, intersection.z);
+
+			/*for (int i = 0; i < scene.objectsCount; i++) {
 				Vector3 tempIntersect;
-				switch (scene.object[i].type) {
-					case Sphere:
-						tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].size.x);
-						break;
-					default:
-						tempIntersect.empty = 1;
+				if (strcmp(scene.object[i].type, "sph") == 0) {
+					//printf("%.10f %.10f %.10f", scene.object[i].position.x, scene.object[i].position.y, scene.object[i].position.z);
+					tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].size.x);
 				}
+				else
+					tempIntersect.empty = 1;
 
 				if (tempIntersect.empty != 1 && (DistVector(camPos, tempIntersect) > DistVector(camPos, intersection)))
 					intersection = tempIntersect;
-			}
+			}*/
 			
 			if (intersection.empty == 0) { // Si un objet à été touché on change la couleur du pixel
-				pixelColor.r = 255;
-				pixelColor.g = 255;
-				pixelColor.b = 255;
-			}
-			else {
 				pixelColor.r = 0;
 				pixelColor.g = 0;
 				pixelColor.b = 0;
+			}
+			else {
+				pixelColor.r = 255;
+				pixelColor.g = 255;
+				pixelColor.b = 255;
 			}
 
 			colors[y * scene.camera.screenWidth + x] = pixelColor;

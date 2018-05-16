@@ -1,6 +1,8 @@
 #include "mathC.h"
 #include <math.h>
 
+
+
 int minValue(int a, int b) {
 	if (a > b)
 		return b;
@@ -11,6 +13,10 @@ int maxValue(int a, int b) {
 	if (a < b)
 		return b;
 	return a;
+}
+
+Vector3 vectorWithPos(int x, int y, int z) {
+	return (Vector3) { x, y, z, 0 };
 }
 
 Vector3 AddVector(Vector3 a, Vector3 b) {

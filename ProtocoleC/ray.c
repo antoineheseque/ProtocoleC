@@ -8,9 +8,13 @@ Ray getRayFromPixel(Camera cam, int x, int y) {
 	ray.position = pos;
 
 	// Direction
+	Vector3 dir;
+	dir.x = (x - 0.5 * cam.screenWidth) / 100 - cam.position.x;
+	dir.y = (y - 0.5 * cam.screenHeight) / 100 - cam.position.y;
+	dir.z = 10.0 - cam.position.z;
+	ray.direction = dir;
 
-
-	// Code pour tracer le rayon
+	//printf("%f %f %f\n", dir.x, dir.y, dir.z);
 
 	return ray;
 }

@@ -2,23 +2,6 @@
 #include "objects.h"
 #include "ray.h"
 
-char * getObjectType(ObjectType type) {
-	switch (type) {
-		case Sphere:
-			return "Sphere";
-			break;
-		case Cube:
-			return "Cube";
-			break;
-		case Plan:
-			return "Plan";
-			break;
-		default:
-			return "unknown";
-			break;
-	}
-}
-
 Vector3 CollideWithPlan(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3){
 	Vector3 inter;
 	int x,y,z;
@@ -41,34 +24,41 @@ Vector3 CollideWithPlan(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3){
 
 Vector3 CollideWithSphere(Ray ray, Vector3 orig, int radius){
 	Vector3 inter;
-	int x, y, z;
-	int a = pow(ray.direction.x, 2) + pow(ray.direction.y, 2) + pow(ray.direction.z, 2);
-	int b = (2 * ray.position.x * ray.direction.x) - (2 * orig.x * ray.direction.x) + (2 * ray.position.y * ray.direction.y) - (2 * orig.y * ray.direction.y) + (2 * ray.position.z * ray.direction.z);
-	int c = pow(ray.position.x,2) + pow(orig.x,2) - (ray.position.x * orig.x) + pow(orig.y,2) - (2 * ray.position.y * orig.y) + pow(ray.position.z,2) + pow(orig.z,2) - (2 * ray.position.z * orig.z) - pow(radius,2);
+	double a = pow(ray.direction.x, 2) + pow(ray.direction.y, 2) + pow(ray.direction.z, 2);
+	double b = (2 * ray.position.x * ray.direction.x) - (2 * orig.x * ray.direction.x) + (2 * ray.position.y * ray.direction.y) - (2 * orig.y * ray.direction.y) + (2 * ray.position.z * ray.direction.z);
+	double c = pow(ray.position.x,2) + pow(orig.x,2) - (ray.position.x * orig.x) + pow(orig.y,2) - (2 * ray.position.y * orig.y) + pow(ray.position.z,2) + pow(orig.z,2) - (2 * ray.position.z * orig.z) - pow(radius,2);
 
-	int delta = pow(b,2) - 4 * a * c;
-
+	double delta = pow(b,2) - 4 * a * c;
 	if (delta >= 0){ //il y a intersection entre le rayon et le plan
-		
-		int t1, t2;
+		printf("PLAYGZFYZ");
+		double t1, t2;
 		t1 = (-b + sqrt(delta)) / (2 * a);
 		t2 = (-b - sqrt(delta)) / (2 * a);
 
 		if (t1 >= 0 && t2 >= 0){
-			/*inter1.x = pt.x + vect.x * t1;
-			inter1.y = pt.y + vect.y * t1;
-			inter1.z = pt.z + vect.z * t1;
+			Vector3 vec1;
+			vec1.x = ray.position.x + ray.direction.x * t1;
+			vec1.y = ray.position.y + ray.direction.y * t1;
+			vec1.z = ray.position.z + ray.direction.z * t1;
 
-			inter2.x = pt.x + vect.x * t2;
-			inter2.y = pt.y + vect.y * t2;
-			inter2.z = pt.z + vect.z * t2;*/
+			Vector3 vec2;
+			vec2.x = ray.position.x + ray.direction.x * t2;
+			vec2.y = ray.position.y + ray.direction.y * t2;
+			vec2.z = ray.position.z + ray.direction.z * t2;
+
+			if (DistVector(ray.position, vec1) > DistVector(ray.position, vec2))
+				return vec2;
+			else
+				return vec1;
 		}
 		if (t1 < 0){
+			printf("PLAYGZFYZ2");
 			inter.x = ray.position.x + ray.direction.x * t2;
 			inter.y = ray.position.y + ray.direction.y * t2;
 			inter.z = ray.position.z + ray.direction.z * t2;
 		}
 		if (t2 < 0){
+			printf("PLAYGZFYZ3");
 			inter.x = ray.position.x + ray.direction.x * t1;
 			inter.y = ray.position.y + ray.direction.y * t1;
 			inter.z = ray.position.z + ray.direction.z * t1;
