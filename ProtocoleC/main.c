@@ -10,20 +10,21 @@ int main(int argc, char *argv[]) {
 	Scene scene;
 	scene = readFile();
 
+	Color * colors = malloc(sizeof(Color) * scene.camera.screenHeight * scene.camera.screenWidth);
+
 	// -------------------------------------- IMAGE
 	for (int y = 0; y < scene.camera.screenHeight; y++) {
 		for (int x = 0; x < scene.camera.screenWidth; x++) {
-			Color color;
+			Color pixelColor;
 			Ray ray = getRayFromPixel(scene.camera, x, y);
+
+
+			colors
 		}
 	}
 
 	// -------------------------------------- EXPORT IMG
-	Color * color = malloc(sizeof(Color) * scene.camera.screenHeight * scene.camera.screenWidth);
-
-	 
-
-	exportIMG(scene.camera, color);
+	exportIMG(scene.camera, colors);
 
 	system("pause");
 	return 0;
