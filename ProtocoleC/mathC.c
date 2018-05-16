@@ -1,4 +1,5 @@
 #include "mathC.h"
+#include <math.h>
 
 int minValue(int a, int b) {
 	if (a > b)
@@ -46,9 +47,13 @@ int ScalarVector(Vector3 a, Vector3 b) {
 	return scalar;
 }
 
-float distVector(Vector3 a, Vector3 b){
+float DistVector(Vector3 a, Vector3 b){
+
+	if (a.empty == 1 || b.empty == 1) // Si le 2eme vecteur est a l'origine 
+		return 0.0;
+
 	float distance;
-	distance = pow(b.x-a.x, 2) + pow(b.y-a.y, 2) + pow(b.z-a.z, 2)
+	distance = pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2);
 	distance = sqrt(distance);
 	return distance;
 }

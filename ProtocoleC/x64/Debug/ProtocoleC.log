@@ -1,11 +1,7 @@
 ﻿  main.c
-d:\documents\protocolec\protocolec\main.c(26): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
-d:\documents\protocolec\protocolec\main.c(7): warning C4100: 'argv' : paramètre formel non référencé
-d:\documents\protocolec\protocolec\main.c(7): warning C4100: 'argc' : paramètre formel non référencé
-d:\documents\protocolec\protocolec\main.c(17): warning C4101: 'ray' : variable locale non référencée
-d:\documents\protocolec\protocolec\main.c(16): warning C4101: 'color' : variable locale non référencée
-  file.c
-d:\documents\protocolec\protocolec\file.c(34): warning C4477: 'fscanf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 1 est de type 'ObjectType *'
-  Génération de code en cours...
-d:\documents\protocolec\protocolec\file.c(43): warning C4701: variable locale 'scene' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\mathc.c(56): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+d:\documents\protocolec\protocolec\mathc.c(57): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+d:\documents\protocolec\protocolec\main.c(57): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
+d:\documents\protocolec\protocolec\main.c(9): warning C4100: 'argv' : paramètre formel non référencé
+d:\documents\protocolec\protocolec\main.c(9): warning C4100: 'argc' : paramètre formel non référencé
   ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe
