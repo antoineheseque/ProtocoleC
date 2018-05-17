@@ -1,7 +1,15 @@
 #include "mathC.h"
 #include <math.h>
 
-
+Vector3 normalizeVector(Vector3 vec)
+{
+	Vector3 normalized = vec;
+	double d = LengthVector(vec);
+	normalized.x /= d;
+	normalized.y /= d;
+	normalized.z /= d;
+	return normalized;
+}
 
 int minValue(int a, int b) {
 	if (a > b)
@@ -46,19 +54,23 @@ Vector3 ProductVector(Vector3 a, Vector3 b) {
 	return vector;
 }
 
-int ScalarVector(Vector3 a, Vector3 b) {
-	int scalar;
+double ScalarVector(Vector3 a, Vector3 b) {
+	double scalar;
 	scalar = a.x*b.x + a.y*b.y + a.z*b.z;
 
 	return scalar;
 }
 
-float DistVector(Vector3 a, Vector3 b){
+double LengthVector(Vector3 vec) {
+	return sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+}
+
+double DistVector(Vector3 a, Vector3 b){
 
 	if (a.empty == 1 || b.empty == 1) // Si le 2eme vecteur est a l'origine 
 		return 0.0;
 
-	float distance;
+	double distance;
 	distance = pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2);
 	distance = sqrt(distance);
 	return distance;
