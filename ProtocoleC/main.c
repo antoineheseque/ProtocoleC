@@ -78,7 +78,5 @@ int main(int argc, char *argv[]) {
 	
 	// -------------------------------------- EXPORT IMG
 	exportIMG(scene.camera, colors);
-
-	system("pause");
 	return 0;
 }
