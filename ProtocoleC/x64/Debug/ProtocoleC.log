@@ -1,4 +1,6 @@
-﻿  ray.c
-d:\documents\protocolec\protocolec\ray.c(16): warning C4013: 'tan' non défini(e) ; extern retournant int pris par défaut
-d:\documents\protocolec\protocolec\ray.c(16): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+﻿  main.c
+d:\documents\protocolec\protocolec\mathc.c(27): warning C4204: extension non standard utilisée : initialiseur d'agrégat non constant
+d:\documents\protocolec\protocolec\main.c(9): warning C4100: 'argv' : paramètre formel non référencé
+d:\documents\protocolec\protocolec\main.c(9): warning C4100: 'argc' : paramètre formel non référencé
+d:\documents\protocolec\protocolec\main.c(15): warning C4189: 'colors' : variable locale initialisée mais non référencée
   ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe
