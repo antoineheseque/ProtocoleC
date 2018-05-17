@@ -10,28 +10,16 @@ Ray getRayFromPixel(Camera cam, int x, int y) {
 
 	// Direction
 	Vector3 dir = cam.direction;
-	dir.x += x - ((float) cam.screenWidth / 2);
-	dir.y += y - ((float) cam.screenHeight / 2);
+	dir.x += (((float)cam.screenWidth / 2) - x);
+	dir.x /= 90;// ((float)cam.screenWidth / (float)cam.screenHeight);
+	dir.y += (((float)cam.screenHeight / 2) - y);
+	dir.y /= 90;//((float)cam.screenWidth / (float)cam.screenHeight);
 	//printf("%.2f %.2f\n", dir.x, dir.y);
 	dir.z = 1;
 
-	//dir = normalizeVector(dir);
+	dir = normalizeVector(dir);
 
 	ray.direction = dir;
-
-	/*dir.x = (x - 0.5 * cam.screenWidth) / 6
-		- cam.position.x;
-	dir.y = (y - 0.5 * cam.screenHeight)/ 6 - cam.position.y;
-	dir.z = 1.0;*/
-
-	/*float scale = tan(45 * 3.1415 / 180);
-	float imageAspectRatio = cam.screenWidth / (float)cam.screenHeight;
-
-	dir.x = (2 * (x + 0.5) / (float)cam.screenWidth - 1) * imageAspectRatio * scale;
-	dir.y = (1 - 2 * (y + 0.5) / (float)cam.screenHeight) * scale;
-	dir.z = -1;
-	dir = normalizeVector(dir);
-	ray.direction = dir;*/
 
 	return ray;
 }
