@@ -18,4 +18,5 @@ Vector3 SubVector(Vector3 a, Vector3 b);
 Vector3 ProductVector(Vector3 a, Vector3 b);
 int ScalarVector(Vector3 a, Vector3 b);
 float DistVector(Vector3 a, Vector3 b);
+double delta(double a, double b, double c);
 #endif

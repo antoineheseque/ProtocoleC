@@ -55,11 +55,17 @@ int ScalarVector(Vector3 a, Vector3 b) {
 
 float DistVector(Vector3 a, Vector3 b){
 
-	if (a.empty == 1 || b.empty == 1) // Si le 2eme vecteur est a l'origine 
+	if (a.empty == 1 || b.empty == 1) // Si le 2eme vecteur est a l'origine
 		return 0.0;
 
 	float distance;
 	distance = pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2);
 	distance = sqrt(distance);
 	return distance;
+}
+
+double delta(double a, double b, double c){
+	double result = 0;
+	result = pow(b, 2) - 4*a*c;
+	return result;
 }
