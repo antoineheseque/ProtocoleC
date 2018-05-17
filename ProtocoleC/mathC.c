@@ -64,8 +64,11 @@ float DistVector(Vector3 a, Vector3 b){
 	return distance;
 }
 
-double delta(double a, double b, double c){
-	double result = 0;
-	result = pow(b, 2) - 4*a*c;
+Delta delta_(double a, double b, double c){
+	Delta result;
+	result.delta = pow(b, 2) - 4*a*c;
+	result.x1 = (-b + sqrt(result.delta))/(2*a);
+	result.x2 = (-b - sqrt(result.delta))/(2*a);
+	printf("%lf %lf", result.x1, result.x2);
 	return result;
 }

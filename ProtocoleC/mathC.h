@@ -2,6 +2,7 @@
 #define DEF_MATH
 
 #include "mathC.h"
+#include <stdio.h>
 
 typedef struct vector3 {
 	double x;
@@ -10,6 +11,15 @@ typedef struct vector3 {
 
 	int empty;
 } Vector3;
+
+typedef struct delta {
+	double a;
+	double b;
+	double c;
+	double delta;
+	double x1;
+	double x2;
+} Delta;
 
 int minValue(int a, int b);
 int maxValue(int a, int b);
