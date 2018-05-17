@@ -21,8 +21,8 @@ $current .= $_SESSION['camPosX'] . ";" . $_SESSION['camPosY'] . ";" . $_SESSION[
 $current .= $_SESSION['camPosX'] . ";" . $_SESSION['camPosY'] . ";" . $_SESSION['camPosZ'] . "\n";
 $current .= $_SESSION['width'] . "\n";
 $current .= $_SESSION['height'] . "\n";
-$current .= $_SESSION['objType'] . ";" . $_SESSION['objX'] . ";" . $_SESSION['objY'] . ";" . $_SESSION['objZ'] . ";" . $_SESSION['objSX'] . ";" . $_SESSION['objSY'] . ";" . $_SESSION['objSZ'] . "\n";
-
+$current .= $_SESSION['objX'] . ";" . $_SESSION['objY'] . ";" . $_SESSION['objZ'] . ";" . $_SESSION['objSX'] . ";" . $_SESSION['objSY'] . ";" . $_SESSION['objSZ'] . ";";
+$current.= $_SESSION['objType'] . "\n";
 file_put_contents("main.scene", $current);
 
 exec("ProtocoleC.exe");

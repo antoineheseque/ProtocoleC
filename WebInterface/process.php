@@ -26,17 +26,17 @@ if(isset($_POST['submit'])){
 		<form action="./process2.php" method="post">
 			<fieldset>
 				<legend>Objet(s)</legend>
-				
+
 				<!-- Ajouter des objets ici -->
-				Type: 
+				Type:
 				<select name="objType">
-				  <option value="cube">cube</option>
-				  <option value="sphere">sphere</option>
-				  <option value="plan">plan</option>
+				  <option value="cub">cube</option>
+				  <option value="sph">sphere</option>
+				  <option value="pla">plan</option>
 				</select>
 				Position: <input type="number" name="objX" min="-100" max="100"> <input type="number" name="objY" min="-100" max="100"> <input type="number" name="objZ" min="-100" max="100">
 				Taille: <input type="number" name="objSX" min="-100" max="100"> <input type="number" name="objSY" min="-100" max="100"> <input type="number" name="objSZ" min="-100" max="100">
-				
+
 				<input type="submit" name="submit" value="Afficher le Rendu">
 			</fieldset>
 		</form>
