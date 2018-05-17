@@ -1,9 +1,10 @@
-/* CHANGE FONT */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 *{
 	padding: 0;
 	margin: 0;
 	color: white;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .title{
@@ -66,5 +67,8 @@ footer{
 }
 
 select{
+	color: black;
+}
+option{
 	color: black;
 }

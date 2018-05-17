@@ -25,10 +25,13 @@ int main(int argc, char *argv[]) {
 	intersection = CollideWithSphere(ray, center, 2);
 	printf("%.10f %.10f %.10f", intersection.x, intersection.y, intersection.z);*/
 	
+	char * fileName = malloc(sizeof(char) * 16);
+	if (argc == 2)
+		fileName = argv[1];
+	else
+		fileName = "result";
 
 	// -------------------------------------- RECUPERATION PIXEL PAR PIXEL ET RECHERCHE DE LA COULEUR DE CHAQUE PIXEL PAR RAPPORT A CHAQUE OBJETS
-	
-	
 	Vector3 camPos = scene.camera.position;
 	for (int y = 0; y < scene.camera.screenHeight; y++) {
 		for (int x = 0; x < scene.camera.screenWidth; x++) {
@@ -77,6 +80,6 @@ int main(int argc, char *argv[]) {
 	}
 	
 	// -------------------------------------- EXPORT IMG
-	exportIMG(scene.camera, colors);
+	exportIMG(scene.camera, colors, fileName);
 	return 0;
 }

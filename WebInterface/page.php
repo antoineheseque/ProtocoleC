@@ -12,14 +12,15 @@
 			<fieldset>
 				<legend>Paramètres de la Scène</legend>
 				<div class="text">Position de la caméra : </div>
-				<div class="pos"><input type="number" name="camPosX" min="-100" max="100"> <input type="number" name="camPosY" min="-100" max="100"> <input type="number" name="camPosZ" min="-100" max="100"></div>
+				<div class="pos"><input type="number" name="camPosX" value="0" min="-100" max="100" required> <input type="number" name="camPosY" value="2" min="-100" max="100" required> <input type="number" name="camPosZ" value="0" min="-100" max="100" required></div>
 				<br><br>
 				<div class="text">Orientation de la caméra : </div>
-				<div class="pos"><input type="number" name="camOX" min="-100" max="100"> <input type="number" name="camOY" min="-100" max="100"> <input type="number" name="camOZ" min="-100" max="100"></div>
+				<div class="pos"><input type="number" name="camOX" value="0" min="-100" max="100" required> <input type="number" name="camOY" value="0" min="-100" max="100" required> <input type="number" name="camOZ" value="1" min="-100" max="100" required></div>
 				<br><br>
 				<div class="text">Taille de l'image : </div><div class="pos">
-				<input type="number" name="width" min="10" max="5000"> <input type="number" name="height" min="10" max="5000"></div>
-				<br>
+				<input type="number" name="width" value="1280" min="10" max="5000" required> <input type="number" name="height" value="720" min="10" max="5000" required></div>
+				<br><br>
+				<div class="text">Nombre de Frames:</div><div class="pos"><input type="number" name="frames" value="1" min="1" max="50" required></div>
 				<div class="submit"><input type="submit" name="submit" value="Ajouter des Objets"></div>
 			</fieldset>
 		</form>

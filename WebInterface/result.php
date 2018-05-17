@@ -6,10 +6,20 @@
 </head>
 <body>
 	<?php
-		if(file_exists("result.png"))
-			echo "<img src=\"../ProtocoleC/test.bmp\">";
-		else
-			echo "Erreur dans le programme";
+		session_start();
+		if($_SESSION['frames'] < 2){
+			if(file_exists("result.bmp"))
+				echo "<img src=\"result.bmp\">";
+			else
+				echo "Erreur dans le programme";
+		}
+		else{
+			if(file_exists("result.mp4"))
+				echo "<video width=\"1000\" autoplay loop><source src=\"result.mp4\" type=\"video/mp4\">Your browser does not support HTML5 video.</video>";
+			else
+				echo "Erreur dans le programme";
+		}
+
 	?>
 	<br>
 	<div class="title"><a href="index.php">Retour à l'accueil</a></div>

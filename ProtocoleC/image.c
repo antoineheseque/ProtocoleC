@@ -5,7 +5,7 @@
 #include "camera.h"
 #include "color.h"
 
-void exportIMG(Camera camera, Color * color)
+void exportIMG(Camera camera, Color * color, char * fileName)
 {
 	//width, height, and bitcount are the key factors:
 	int32_t width = camera.screenWidth;
@@ -59,7 +59,12 @@ void exportIMG(Camera camera, Color * color)
 		}
 	}
 	u = 0;
-	FILE *fout = fopen("test.bmp", "wb");
+	const char* extension = ".bmp";
+	char* nameWithExt;
+	nameWithExt = malloc(strlen(fileName) + 5);
+	strcpy(nameWithExt, fileName);
+	strcat(nameWithExt, extension);
+	FILE *fout = fopen(nameWithExt, "wb");
 	fwrite(header, 1, 54, fout);
 	fwrite((char*)buf, 1, imagesize, fout);
 	fclose(fout);
