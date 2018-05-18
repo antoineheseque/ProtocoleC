@@ -13,17 +13,6 @@ int main(int argc, char *argv[]) {
 	scene = readFile();
 
 	Color * colors = malloc(sizeof(Color) * scene.camera.screenHeight * scene.camera.screenWidth);
-	//printf("%.10f %.10f %.10f\n", scene.camera.position.x, scene.camera.position.y, scene.camera.position.z);
-
-	/*Vector3 dir = { 1, 0, 1 };
-	Vector3 pos = { 0, 10, 0 };
-	Vector3 center = { 0, 2, 10 };
-	Ray ray;
-	Vector3 intersection;
-	ray.position = pos;
-	ray.direction = dir;
-	intersection = CollideWithSphere(ray, center, 2);
-	printf("%.10f %.10f %.10f", intersection.x, intersection.y, intersection.z);*/
 	
 	char * fileName = malloc(sizeof(char) * 16);
 	if (argc == 2)
@@ -45,13 +34,10 @@ int main(int argc, char *argv[]) {
 			for (int i = 0; i < scene.objectsCount; i++) {
 				Vector3 tempIntersect;
 				if (strcmp(scene.object[i].type, "sph") == 0) {
-					//printf("%d %d %d\n", scene.object[i].position.x, scene.object[i].position.y, scene.object[i].position.z);
-					//printf("%.10f %.10f %.10f\n", scene.object[i].position.x, scene.object[i].position.y, scene.object[i].position.z);
 					tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].size.x);
-					//if(tempIntersect.x != 0)
-						//printf("%.10f %0.10f %.10f\n", tempIntersect.x, tempIntersect.y, tempIntersect.z);
-					//printf("%.10f %.10f %.10f\n", tempIntersect.x, tempIntersect.y, tempIntersect.z);
 				}
+
+
 
 				if (tempIntersect.empty == 0) {
 					if(intersection.empty == 1)

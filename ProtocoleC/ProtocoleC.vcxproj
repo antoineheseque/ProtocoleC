@@ -120,6 +120,7 @@
     <ClCompile Include="color.c" />
     <ClCompile Include="file.c" />
     <ClCompile Include="image.c" />
+    <ClCompile Include="light.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="objects.c" />
     <ClCompile Include="scene.c" />
@@ -129,6 +130,7 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="file.h" />
+    <ClInclude Include="light.h" />
     <ClInclude Include="mathC.c" />
     <ClInclude Include="mathC.h" />
     <ClInclude Include="objects.h" />
@@ -139,7 +141,7 @@
     <None Include="main.scene" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="test.bmp" />
+    <Image Include="result.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
