@@ -9,6 +9,11 @@ if(isset($_POST['submit'])){
 	$_SESSION['camOY'] = $_POST['camOY'];
 	$_SESSION['camOZ'] = $_POST['camOZ'];
 
+	$_SESSION['addLight'] = $_POST['addLight'];
+	$_SESSION['lightPosX'] = $_POST['lightPosX'];
+	$_SESSION['lightPosY'] = $_POST['lightPosY'];
+	$_SESSION['lightPosZ'] = $_POST['lightPosZ'];
+
 	$_SESSION['width'] = $_POST['width'];
 	$_SESSION['height'] = $_POST['height'];
 	$_SESSION['frames'] = $_POST['frames'];
@@ -27,9 +32,9 @@ if(isset($_POST['submit'])){
 		<form action="./process2.php" method="post">
 			<fieldset>
 				<legend>Objet(s)</legend>
-				
+
 				<!-- Ajouter des objets ici -->
-				Type: 
+				Type:
 				<select name="objType" value="sph" required>
 				  <option value="cub">Cube</option>
 				  <option value="sph">Sphere</option>
@@ -37,7 +42,7 @@ if(isset($_POST['submit'])){
 				</select>
 				Position: <input type="number" name="objX" value="0" min="-100" max="100" required> <input type="number" name="objY" value="2" min="-100" max="100" required> <input type="number" name="objZ" value="5" min="-100" max="100" required>
 				Taille: <input type="number" name="objSX" value="2" min="-100" max="100" required> <input type="number" name="objSY" value="2" min="-100" max="100" required> <input type="number" name="objSZ" value="2" min="-100" max="100" required>
-				
+				Color: <input type="number" name="colorR" value="255" min="0" max="255" required> <input type="number" name="colorG" value="2" min="0" max="255" required> <input type="number" name="colorB" value="128" min="0" max="255" required>
 				<input type="submit" name="submit" value="Afficher le Rendu">
 			</fieldset>
 		</form>

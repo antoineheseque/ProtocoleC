@@ -11,6 +11,10 @@ if(isset($_POST['submit'])){
 	$_SESSION['objSY'] = $_POST['objSY'];
 	$_SESSION['objSZ'] = $_POST['objSZ'];
 	$_SESSION['objType'] = $_POST['objType'];
+
+	$_SESSION['colorR'] = $_POST['colorR'];
+	$_SESSION['colorG'] = $_POST['colorG'];
+	$_SESSION['colorB'] = $_POST['colorB'];
 }
 
 if($_SESSION['frames'] < 2){
@@ -19,11 +23,11 @@ if($_SESSION['frames'] < 2){
 	header("Location: result.php");
 }
 else{
-	$_SESSION['camPosX'] -= round($_SESSION['frames'] / 2);
+	$_SESSION['camPosX'] -= round($_SESSION['frames']*2);
 	for($i = 0; $i < $_SESSION['frames']; $i++){
 		createFile();
 		exec("ProtocoleC.exe img/result" . $i);
-		$_SESSION['camPosX'] += 1;
+		$_SESSION['camPosX'] += 4;
 	}
 	if(file_exists("result.mp4"))
 		unlink("result.mp4");
@@ -41,9 +45,10 @@ function createFile(){
 	$current = "";
 	$current .= $_SESSION['camPosX'] . ";" . $_SESSION['camPosY'] . ";" . $_SESSION['camPosZ'] . "\n";
 	$current .= $_SESSION['camPosX'] . ";" . $_SESSION['camPosY'] . ";" . $_SESSION['camPosZ'] . "\n";
+	$current .= $_SESSION['addLight'] . ";" . $_SESSION['lightPosX'] . ";" . $_SESSION['lightPosY'] . ";" . $_SESSION['lightPosZ'] . "\n";
 	$current .= $_SESSION['width'] . "\n";
 	$current .= $_SESSION['height'] . "\n";
-	$current .= $_SESSION['objX'] . ";" . $_SESSION['objY'] . ";" . $_SESSION['objZ'] . ";" . $_SESSION['objSX'] . ";" . $_SESSION['objSY'] . ";" . $_SESSION['objSZ'] . ";" . $_SESSION['objType'] . "\n";
+	$current .= $_SESSION['objX'] . ";" . $_SESSION['objY'] . ";" . $_SESSION['objZ'] . ";" . $_SESSION['objSX'] . ";" . $_SESSION['objSY'] . ";" . $_SESSION['objSZ'] . ";" . $_SESSION['colorR'] . ";" . $_SESSION['colorG'] . ";" . $_SESSION['colorB'] . ";" . $_SESSION['objType'] . \n";
 
 	fwrite($file, $current);
 	fclose($file);

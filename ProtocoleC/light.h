@@ -4,6 +4,7 @@
 #include "color.h"
 
 typedef struct light {
+  int add;
 	Vector3 position;
   Color color;
 	int intensity;
