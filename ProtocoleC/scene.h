@@ -3,15 +3,16 @@
 
 #include "camera.h"
 #include "objects.h"
+#include "light.h"
 
 typedef struct scene {
 	Camera camera;
-
+	Light light;
 	int objectsCount;
 	Object * object;
 } Scene;
 
 
-void debugScene(Scene scene);
+//void debugScene(Scene scene);
 
 #endif
