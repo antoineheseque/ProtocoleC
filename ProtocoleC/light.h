@@ -5,7 +5,7 @@
 
 typedef struct light {
 	Vector3 position;
-  Color color;
+	Color color;
 	int intensity;
 } Light;
 

@@ -3,10 +3,12 @@
 
 #include "mathC.h"
 #include "ray.h"
+#include "color.h"
 
 typedef struct object {
 	Vector3 position;
 	Vector3 size;
+	Color color;
 	char type[4];
 } Object;
 

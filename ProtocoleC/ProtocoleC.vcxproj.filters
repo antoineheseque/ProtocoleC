@@ -39,6 +39,9 @@
     <ClCompile Include="ray.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="light.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mathC.c">
@@ -65,6 +68,9 @@
     <ClInclude Include="ray.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="light.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="main.scene">
@@ -72,7 +78,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="test.bmp">
+    <Image Include="result.bmp">
       <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>
