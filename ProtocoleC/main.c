@@ -55,14 +55,14 @@ int main(int argc, char *argv[]) {
 			if (intersection.empty == 0) { // Si un objet à été touché on change la couleur du pixel
 				Color col = intersectedObject.color;
 				Vector3 L = SubVector(scene.light.position,intersection);
-				Vector3 normal = SubVector(intersection, intersectedObject.position);
+				Vector3 normal = intersection;
 
-				col = ApplyLightEffect(col, getLightIntensity(L, normal));
+				col = ApplyLightEffect(col, 4*getLightIntensity(L, normal));
 				//printf("%f\n", getLightIntensity(L, normal));
-				Ray ray;
-				ray.position = intersection;
-				ray.direction = normal; //normalizeVector(normal)
-				Vector3 canTouchLight = CollideWithSphere(ray, intersectedObject.position, intersectedObject.size.x);
+				Ray ray2;
+				ray2.position = AddVector(intersection, intersectedObject.position);
+				ray2.direction = normalizeVector(normal); //
+				Vector3 canTouchLight = CollideWithSphere(ray2, intersectedObject.position, intersectedObject.size.x);
 				if (canTouchLight.empty == 1) {
 					pixelColor.r = col.r;
 					pixelColor.g = col.g;

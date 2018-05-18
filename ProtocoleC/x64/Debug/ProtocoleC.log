@@ -2,11 +2,9 @@
 d:\documents\protocolec\protocolec\light.h(13): warning C4131: 'getLightIntensity' : utilise un déclarateur obsolète
 d:\documents\protocolec\protocolec\main.c(38): warning C4013: 'strcmp' non défini(e) ; extern retournant int pris par défaut
 d:\documents\protocolec\protocolec\main.c(39): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(62): warning C4456: la déclaration de 'ray' masque la déclaration locale précédente
-  d:\documents\protocolec\protocolec\main.c(29): note: voir la déclaration de 'ray'
 d:\documents\protocolec\protocolec\main.c(65): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
 d:\documents\protocolec\protocolec\main.c(88): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
 d:\documents\protocolec\protocolec\main.c(43): warning C4701: variable locale 'tempIntersect' potentiellement non initialisée utilisée
 d:\documents\protocolec\protocolec\main.c(46): warning C4701: variable locale 'tempObj' potentiellement non initialisée utilisée
-d:\documents\protocolec\protocolec\main.c(58): warning C4701: variable locale 'intersectedObject' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\main.c(63): warning C4701: variable locale 'intersectedObject' potentiellement non initialisée utilisée
   ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe
