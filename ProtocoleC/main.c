@@ -5,6 +5,7 @@
 #include "mathC.c"
 #include "ray.h"
 #include "objects.h"
+#include "light.h"
 
 int main(int argc, char *argv[]) {
 
@@ -28,31 +29,49 @@ int main(int argc, char *argv[]) {
 			Ray ray = getRayFromPixel(scene.camera, x, y);
 			//printf("%.10f %0.10f %.10f\n", ray.direction.x, ray.direction.y, ray.direction.z);
 			//printf("%.10f %.10f %.10f", scene.camera.position.x, scene.camera.position.y, scene.camera.position.z);
-
 			Vector3 intersection;
 			intersection.empty = 1;
-			for (int i = 0; i < scene.objectsCount; i++) {
+			Object intersectedObject;
+			for (int i = 0; i < scene.objectsCount; i++) { // Pour tout les objets de la scène
 				Vector3 tempIntersect;
-				if (strcmp(scene.object[i].type, "sph") == 0) {
+				Object tempObj;
+				if (strcmp(scene.object[i].type, "sph") == 0) { // Si l'objet est une sphère
 					tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].size.x);
+					tempObj = scene.object[i];
 				}
 
-
-
-				if (tempIntersect.empty == 0) {
-					if(intersection.empty == 1)
+				if (tempIntersect.empty == 0) { // Si un objet à été touché...
+					if (intersection.empty == 1) { // Si aucun objet n'avais déjà été touché...
 						intersection = tempIntersect;
-					else if(DistVector(camPos, tempIntersect) < DistVector(camPos, intersection))
+						intersectedObject = tempObj;
+					}
+					// Sinon si un objet plus proche que celui déjà touché est touché ...
+					else if (DistVector(camPos, tempIntersect) < DistVector(camPos, intersection)) { 
 						intersection = tempIntersect;
+						intersectedObject = tempObj;
+					}
 				}
-					
 			}
-			
 			if (intersection.empty == 0) { // Si un objet à été touché on change la couleur du pixel
-				pixelColor.r = 0;
-				pixelColor.g = 0;
-				pixelColor.b = 0;
-				
+				Color col = intersectedObject.color;
+				Vector3 L = SubVector(scene.light.position,intersection);
+				Vector3 normal = SubVector(intersection, intersectedObject.position);
+
+				col = ApplyLightEffect(col, getLightIntensity(L, normal));
+				//printf("%f\n", getLightIntensity(L, normal));
+				Ray ray;
+				ray.position = intersection;
+				ray.direction = normal; //normalizeVector(normal)
+				Vector3 canTouchLight = CollideWithSphere(ray, intersectedObject.position, intersectedObject.size.x);
+				if (canTouchLight.empty == 1) {
+					pixelColor.r = col.r;
+					pixelColor.g = col.g;
+					pixelColor.b = col.b;
+				} else {
+					pixelColor.r = 0;
+					pixelColor.g = 0;
+					pixelColor.b = 0;
+				}
 			}
 			else {
 				pixelColor.r = 255;
@@ -67,5 +86,6 @@ int main(int argc, char *argv[]) {
 	
 	// -------------------------------------- EXPORT IMG
 	exportIMG(scene.camera, colors, fileName);
+	system("pause");
 	return 0;
 }

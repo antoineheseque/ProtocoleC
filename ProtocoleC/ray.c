@@ -7,7 +7,7 @@ Ray getRayFromPixel(Camera cam, int x, int y) {
 	Vector3 pos = cam.position;
 	pos.x += (((float)cam.screenWidth / 2) - x);
 	pos.x /= 90;// ((float)cam.screenWidth / (float)cam.screenHeight);
-	pos.y += (((float)cam.screenHeight / 2) - y);
+	pos.y += (((float)cam.screenHeight / 2) - y + 150);
 	pos.y /= 90;//((float)cam.screenWidth / (float)cam.screenHeight);
 	ray.position = pos;
 

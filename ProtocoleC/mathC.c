@@ -23,10 +23,6 @@ int maxValue(int a, int b) {
 	return a;
 }
 
-Vector3 vectorWithPos(int x, int y, int z) {
-	return (Vector3) { x, y, z, 0 };
-}
-
 Vector3 AddVector(Vector3 a, Vector3 b) {
 	Vector3 vector;
 	vector.x = a.x + b.x;

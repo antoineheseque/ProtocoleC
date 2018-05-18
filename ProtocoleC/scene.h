@@ -11,8 +11,4 @@ typedef struct scene {
 	int objectsCount;
 	Object * object;
 } Scene;
-
-
-//void debugScene(Scene scene);
-
 #endif

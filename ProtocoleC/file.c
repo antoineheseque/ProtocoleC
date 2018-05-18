@@ -29,15 +29,15 @@ Scene readFile() {
 		Camera cam;
 		Light light;
 		Object * objects = (Object *)malloc(sizeof(Object));
-		int nbObjects;
+		int nbObjects = 0;
 		fscanf(fichier, "%lf;%lf;%lf", &cam.position.x, &cam.position.y, &cam.position.z);
 		fscanf(fichier, "%lf;%lf;%lf", &cam.direction.x, &cam.direction.y, &cam.direction.z);
-		fscanf(fichier, "%d; %lf;%lf;%lf", &light.add, &light.position.x, &light.position.y, &light.position.z);
+		fscanf(fichier, "%d;%lf;%lf;%lf", &light.add, &light.position.x, &light.position.y, &light.position.z);
 		fscanf(fichier, "%d", &cam.screenWidth);
 		fscanf(fichier, "%d", &cam.screenHeight);
 		fscanf(fichier, "%d", &nbObjects);
 		for(int i = 0; i < nbObjects; i++){
-			fscanf(fichier, "%lf;%lf;%lf;%lf;%lf;%lf;%d;%d;%d;%3s", &objects[i]->position.x, &objects[i]->position.y, &objects[i]->position.z, &objects[i]->size.x, &objects[i]->size.y, &objects[i]->size.z, &objects[i]->color.r, &objects[i]->color.g, &objects[i]->color.b, &objects[i]->type);
+			fscanf(fichier, "%lf;%lf;%lf;%lf;%lf;%lf;%d;%d;%d;%3s", &objects[i].position.x, &objects[i].position.y, &objects[i].position.z, &objects[i].size.x, &objects[i].size.y, &objects[i].size.z, &objects[i].color.r, &objects[i].color.g, &objects[i].color.b, &objects[i].type);
 		}
 		scene.objectsCount = nbObjects;
 		scene.camera = cam;

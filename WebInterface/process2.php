@@ -23,11 +23,11 @@ if($_SESSION['frames'] < 2){
 	header("Location: result.php");
 }
 else{
-	$_SESSION['camPosX'] -= round($_SESSION['frames']*2);
+	$_SESSION['lightPosX'] -= round($_SESSION['frames']*2);
 	for($i = 0; $i < $_SESSION['frames']; $i++){
 		createFile();
 		exec("ProtocoleC.exe img/result" . $i);
-		$_SESSION['camPosX'] += 4;
+		$_SESSION['lightPosX'] += 4;
 	}
 	if(file_exists("result.mp4"))
 		unlink("result.mp4");
@@ -48,7 +48,8 @@ function createFile(){
 	$current .= $_SESSION['addLight'] . ";" . $_SESSION['lightPosX'] . ";" . $_SESSION['lightPosY'] . ";" . $_SESSION['lightPosZ'] . "\n";
 	$current .= $_SESSION['width'] . "\n";
 	$current .= $_SESSION['height'] . "\n";
-	$current .= $_SESSION['objX'] . ";" . $_SESSION['objY'] . ";" . $_SESSION['objZ'] . ";" . $_SESSION['objSX'] . ";" . $_SESSION['objSY'] . ";" . $_SESSION['objSZ'] . ";" . $_SESSION['colorR'] . ";" . $_SESSION['colorG'] . ";" . $_SESSION['colorB'] . ";" . $_SESSION['objType'] . \n";
+	$current .= "1\n";
+	$current .= $_SESSION['objX'] . ";" . $_SESSION['objY'] . ";" . $_SESSION['objZ'] . ";" . $_SESSION['objSX'] . ";" . $_SESSION['objSY'] . ";" . $_SESSION['objSZ'] . ";" . $_SESSION['colorR'] . ";" . $_SESSION['colorG'] . ";" . $_SESSION['colorB'] . ";" . $_SESSION['objType'] . "\n";
 
 	fwrite($file, $current);
 	fclose($file);

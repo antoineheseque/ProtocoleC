@@ -32,7 +32,7 @@ Vector3 CollideWithSphere(Ray ray, Vector3 orig, int radius){
 		return inter;
 
 	float discr = b * b - c;
-	if (discr < 0.0f) 
+	if (discr <= 0.0f) 
 		return inter;
 
 	double t = -b - sqrt(discr);
