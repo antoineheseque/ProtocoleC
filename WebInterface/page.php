@@ -12,7 +12,7 @@
 			<fieldset>
 				<legend>Paramètres de la Scène</legend>
 				<div class="text">Position de la caméra : </div>
-				<div class="pos"><input type="number" name="camPosX" value="0" min="-100" max="100" required> <input type="number" name="camPosY" value="2" min="-100" max="100" required> <input type="number" name="camPosZ" value="0" min="-100" max="100" required></div>
+				<div class="pos"><input type="number" name="camPosX" value="0" min="-1000" max="1000" required> <input type="number" name="camPosY" value="2" min="-1000" max="1000" required> <input type="number" name="camPosZ" value="0" min="-1000" max="1000" required></div>
 				<br><br>
 				<div class="text">Orientation de la caméra : </div>
 				<div class="pos"><input type="number" name="camOX" value="0" min="-100" max="100" required> <input type="number" name="camOY" value="0" min="-100" max="100" required> <input type="number" name="camOZ" value="1" min="-100" max="100" required></div>
@@ -21,7 +21,7 @@
 				<input type="number" name="width" value="1280" min="10" max="5000" required> <input type="number" name="height" value="720" min="10" max="5000" required></div>
 				<br><br>
 				<div class="text">Source lumineuse </div><div class="pos">
-				<input type="number" name="addLight" value="0" min="0" max="1" required> <input type="number" name="lightPosX" value="2" min="-100" max="100" required><input type="number" name="lightPosY" value="2" min="-100" max="100" required><input type="number" name="lightPosZ" value="2" min="-100" max="100" required></div>
+				<input type="number" name="addLight" value="0" min="0" max="1" required> <input type="number" name="lightPosX" value="-10" min="-1000" max="1000" required><input type="number" name="lightPosY" value="-10" min="-1000" max="1000" required><input type="number" name="lightPosZ" value="2" min="-1000" max="1000" required></div>
 				<br><br>
 				<div class="text">Nombre de Frames:</div><div class="pos"><input type="number" name="frames" value="1" min="1" max="200" required></div>
 				<div class="submit"><input type="submit" name="submit" value="Ajouter des Objets"></div>

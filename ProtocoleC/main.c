@@ -35,8 +35,8 @@ int main(int argc, char *argv[]) {
 			for (int i = 0; i < scene.objectsCount; i++) { // Pour tout les objets de la scène
 				Vector3 tempIntersect;
 				Object tempObj;
-				if (strcmp(scene.object[i].type, "sph") == 0) { // Si l'objet est une sphère
-					tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].size.x);
+				if (strcmp(scene.object[i].type, "sph") == 0) { // Si l'objet est une sphere
+					tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].radius);
 					tempObj = scene.object[i];
 				}
 
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 				Ray ray2;
 				ray2.position = AddVector(intersection, intersectedObject.position);
 				ray2.direction = normalizeVector(normal); //
-				Vector3 canTouchLight = CollideWithSphere(ray2, intersectedObject.position, intersectedObject.size.x);
+				Vector3 canTouchLight = CollideWithSphere(ray2, intersectedObject.position, intersectedObject.radius);
 				if (canTouchLight.empty == 1) {
 					pixelColor.r = col.r;
 					pixelColor.g = col.g;

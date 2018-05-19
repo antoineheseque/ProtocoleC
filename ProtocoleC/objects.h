@@ -7,7 +7,13 @@
 
 typedef struct object {
 	Vector3 position;
+	
+	// Specific to SPHERE
+	double radius;
+
+	// Specific to CUBE & PLAN
 	Vector3 size;
+
 	Color color;
 	char type[4];
 } Object;

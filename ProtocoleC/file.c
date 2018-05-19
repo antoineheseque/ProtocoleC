@@ -37,11 +37,16 @@ Scene readFile() {
 		fscanf(fichier, "%d", &cam.screenHeight);
 		fscanf(fichier, "%d", &nbObjects);
 		for(int i = 0; i < nbObjects; i++){
-			fscanf(fichier, "%lf;%lf;%lf;%lf;%lf;%lf;%d;%d;%d;%3s", &objects[i].position.x, &objects[i].position.y, &objects[i].position.z, &objects[i].size.x, &objects[i].size.y, &objects[i].size.z, &objects[i].color.r, &objects[i].color.g, &objects[i].color.b, &objects[i].type);
+			objects = realloc(objects, sizeof(Object) * (i+2));
+			fscanf(fichier, "%3s", &objects[i].type);
+			if (strcmp(objects[i].type, "sph") == 0) {
+				fscanf(fichier, ";%lf;%lf;%lf;%lf;%d;%d;%d", &objects[i].position.x, &objects[i].position.y, &objects[i].position.z, &objects[i].radius, &objects[i].color.r, &objects[i].color.g, &objects[i].color.b);
+			}
+			
 		}
 		scene.objectsCount = nbObjects;
 		scene.camera = cam;
-		scene.objectsCount = 1;
+		scene.objectsCount = nbObjects;
 		scene.object = objects;
 		scene.light = light;
 	}

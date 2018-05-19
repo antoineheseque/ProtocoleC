@@ -2,7 +2,7 @@
 session_start();
 /* Créer le fichier contenant les données stockées en session et lancer le script puis rediriger vers result */
 
-if(isset($_POST['submit'])){
+/*if(isset($_POST['submit'])){
 	$_SESSION['objX'] = $_POST['objX'];
 	$_SESSION['objY'] = $_POST['objY'];
 	$_SESSION['objZ'] = $_POST['objZ'];
@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
 	$_SESSION['colorR'] = $_POST['colorR'];
 	$_SESSION['colorG'] = $_POST['colorG'];
 	$_SESSION['colorB'] = $_POST['colorB'];
-}
+}*/
 
 if($_SESSION['frames'] < 2){
 	createFile();
@@ -23,11 +23,11 @@ if($_SESSION['frames'] < 2){
 	header("Location: result.php");
 }
 else{
-	$_SESSION['lightPosX'] -= round($_SESSION['frames']*2);
+	$_SESSION['lightPosX'] -= round($_SESSION['frames']);
 	for($i = 0; $i < $_SESSION['frames']; $i++){
 		createFile();
 		exec("ProtocoleC.exe img/result" . $i);
-		$_SESSION['lightPosX'] += 4;
+		$_SESSION['lightPosX'] += 2;
 	}
 	if(file_exists("result.mp4"))
 		unlink("result.mp4");
@@ -48,9 +48,23 @@ function createFile(){
 	$current .= $_SESSION['addLight'] . ";" . $_SESSION['lightPosX'] . ";" . $_SESSION['lightPosY'] . ";" . $_SESSION['lightPosZ'] . "\n";
 	$current .= $_SESSION['width'] . "\n";
 	$current .= $_SESSION['height'] . "\n";
-	$current .= "1\n";
-	$current .= $_SESSION['objX'] . ";" . $_SESSION['objY'] . ";" . $_SESSION['objZ'] . ";" . $_SESSION['objSX'] . ";" . $_SESSION['objSY'] . ";" . $_SESSION['objSZ'] . ";" . $_SESSION['colorR'] . ";" . $_SESSION['colorG'] . ";" . $_SESSION['colorB'] . ";" . $_SESSION['objType'] . "\n";
+	$current .= countArr($_SESSION['objList']) . "\n";
+	//$current .= $_SESSION['objX'] . ";" . $_SESSION['objY'] . ";" . $_SESSION['objZ'] . ";" . $_SESSION['objSX'] . ";" . $_SESSION['objSY'] . ";" . $_SESSION['objSZ'] . ";" . $_SESSION['colorR'] . ";" . $_SESSION['colorG'] . ";" . $_SESSION['colorB'] . ";" . $_SESSION['objType'] . "\n";
+
+	for($i = 0; $i < $_SESSION['objCount']; $i++){
+		if(!empty($_SESSION['objList'][$i]))
+			$current .= $_SESSION['objList'][$i];
+	}
 
 	fwrite($file, $current);
 	fclose($file);
+}
+
+function countArr($arr){
+	$c = 0;
+	foreach($arr as $a){
+		if(!empty($a))
+			$c++;
+	}
+	return $c;
 }
