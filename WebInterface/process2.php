@@ -26,6 +26,7 @@ else{
 	$_SESSION['lightPosX'] -= round($_SESSION['frames']);
 	for($i = 0; $i < $_SESSION['frames']; $i++){
 		createFile();
+		set_time_limit (10);
 		exec("ProtocoleC.exe img/result" . $i);
 		$_SESSION['lightPosX'] += 2;
 	}

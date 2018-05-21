@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
 				//printf("%f\n", getLightIntensity(L, normal));
 				Ray ray2;
 				ray2.position = AddVector(intersection, intersectedObject.position);
-				ray2.direction = normalizeVector(normal); //
+				ray2.direction = normalizeVector(normal);
 				Vector3 canTouchLight = CollideWithSphere(ray2, intersectedObject.position, intersectedObject.radius);
 				if (canTouchLight.empty == 1) {
 					pixelColor.r = col.r;
@@ -81,7 +81,6 @@ int main(int argc, char *argv[]) {
 
 			colors[y * scene.camera.screenWidth + x] = pixelColor;
 		}
-		
 	}
 	
 	// -------------------------------------- EXPORT IMG
