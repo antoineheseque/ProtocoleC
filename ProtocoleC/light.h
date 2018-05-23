@@ -10,5 +10,5 @@ typedef struct light {
 	int intensity;
 } Light;
 
-float getLightIntensity(L, normal);
+float getLightIntensity(Vector3 L, Vector3 normal);
 #endif

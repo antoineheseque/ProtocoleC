@@ -13,11 +13,12 @@ typedef struct object {
 
 	// Specific to CUBE & PLAN
 	Vector3 size;
+	Vector3 normale;
 
 	Color color;
 	char type[4];
 } Object;
 
-Vector3 CollideWithPlan(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3);
+Vector3 CollideWithPlan(Ray ray, Vector3 normale, Vector3 center, Vector3 size);
 Vector3 CollideWithSphere(Ray ray, Vector3 orig, int radius);
 #endif

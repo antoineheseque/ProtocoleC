@@ -1,1 +1,10 @@
-﻿  ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe
+﻿  main.c
+d:\documents\protocolec\protocolec\main.c(38): warning C4013: 'strcmp' non défini(e) ; extern retournant int pris par défaut
+d:\documents\protocolec\protocolec\main.c(39): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(69): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(93): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
+d:\documents\protocolec\protocolec\main.c(82): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 1 est de type 'double'
+d:\documents\protocolec\protocolec\main.c(47): warning C4701: variable locale 'tempIntersect' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\main.c(50): warning C4701: variable locale 'tempObj' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\main.c(67): warning C4701: variable locale 'intersectedObject' potentiellement non initialisée utilisée
+  ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe

@@ -10,5 +10,7 @@ typedef struct ray {
 } Ray;
 
 Ray getRayFromPixel(Camera cam, int x, int y);
-
+Ray getOrthogonalCam(Camera cam, int x, int y);
+Ray getPerspectiveCam(Camera cam, int x, int y);
+float deg2rad(float val);
 #endif

@@ -39,6 +39,10 @@ int main(int argc, char *argv[]) {
 					tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].radius);
 					tempObj = scene.object[i];
 				}
+				if (strcmp(scene.object[i].type, "pla") == 0) { // Si l'objet est une sphere
+					tempIntersect = CollideWithPlan(ray, scene.object[i].normale, scene.object[i].position, scene.object[i].size);
+					tempObj = scene.object[i];
+				}
 
 				if (tempIntersect.empty == 0) { // Si un objet à été touché...
 					if (intersection.empty == 1) { // Si aucun objet n'avais déjà été touché...
@@ -74,9 +78,11 @@ int main(int argc, char *argv[]) {
 				}
 			}
 			else {
-				pixelColor.r = 255;
-				pixelColor.g = 255;
-				pixelColor.b = 255;
+				double c = 127 * cos(ray.direction.y * 100 / 360) + 127;
+				printf("%d\n", c);
+				pixelColor.r = 0;
+				pixelColor.g = 0;
+				pixelColor.b = (int) c;
 			}
 
 			colors[y * scene.camera.screenWidth + x] = pixelColor;

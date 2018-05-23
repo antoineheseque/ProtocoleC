@@ -42,6 +42,10 @@ Scene readFile() {
 			if (strcmp(objects[i].type, "sph") == 0) {
 				fscanf(fichier, ";%lf;%lf;%lf;%lf;%d;%d;%d", &objects[i].position.x, &objects[i].position.y, &objects[i].position.z, &objects[i].radius, &objects[i].color.r, &objects[i].color.g, &objects[i].color.b);
 			}
+			else if (strcmp(objects[i].type, "pla") == 0) {
+				fscanf(fichier, ";%lf;%lf;%lf;%lf;%lf;%lf;%lf;%lf;%d;%d;%d", &objects[i].position.x, &objects[i].position.y, &objects[i].position.z, &objects[i].normale.x, &objects[i].normale.y, &objects[i].normale.z, &objects[i].size.x, &objects[i].size.z, &objects[i].color.r, &objects[i].color.g, &objects[i].color.b);
+				objects[i].size.y = 1;
+			}
 			
 		}
 		scene.objectsCount = nbObjects;

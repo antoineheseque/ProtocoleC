@@ -71,3 +71,28 @@ double DistVector(Vector3 a, Vector3 b){
 	distance = sqrt(distance);
 	return distance;
 }
+
+/*void multVecMatrix(Vector3 src, Vector3 &dst){
+
+	a = src[0] * x[0][0] + src[1] * x[1][0] + src[2] * x[2][0] + x[3][0];
+	b = src[0] * x[0][1] + src[1] * x[1][1] + src[2] * x[2][1] + x[3][1];
+	c = src[0] * x[0][2] + src[1] * x[1][2] + src[2] * x[2][2] + x[3][2];
+	w = src[0] * x[0][3] + src[1] * x[1][3] + src[2] * x[2][3] + x[3][3];
+
+	dst.x = a / w;
+	dst.y = b / w;
+	dst.z = c / w;
+}*/
+
+/*Vector3 multVecMatrix(Vector3 vec){
+	S a, b, c, w;
+
+	a = src[0] * x[0][0] + src[1] * x[1][0] + src[2] * x[2][0] + x[3][0];
+	b = src[0] * x[0][1] + src[1] * x[1][1] + src[2] * x[2][1] + x[3][1];
+	c = src[0] * x[0][2] + src[1] * x[1][2] + src[2] * x[2][2] + x[3][2];
+	w = src[0] * x[0][3] + src[1] * x[1][3] + src[2] * x[2][3] + x[3][3];
+
+	dst.x = a / w;
+	dst.y = b / w;
+	dst.z = c / w;
+}*/

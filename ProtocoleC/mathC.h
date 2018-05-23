@@ -11,6 +11,10 @@ typedef struct vector3 {
 	int empty;
 } Vector3;
 
+typedef struct matrix44 {
+	float matrix[4][4];
+} Matrix44;
+
 Vector3 normalizeVector(Vector3 vec);
 int minValue(int a, int b);
 int maxValue(int a, int b);
@@ -20,4 +24,5 @@ Vector3 ProductVector(Vector3 a, Vector3 b);
 double ScalarVector(Vector3 a, Vector3 b);
 double LengthVector(Vector3 a);
 double DistVector(Vector3 a, Vector3 b);
+//Vector3 multVecMatrix(Vector3 vec);
 #endif
