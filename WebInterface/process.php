@@ -4,6 +4,12 @@ session_start();
 function AddSphere($posX, $posY, $posZ, $radius, $colR, $colG, $colB){
 	$_SESSION['objList'][] = "sph;" . $posX . ";" . $posY . ";" . $posZ . ";" . $radius . ";" . $colR . ";" . $colG . ";" . $colB . "\n";
 }
+function AddTriangle($posXa, $posYa, $posZa, $posXb, $posYb, $posZb, $posXc, $posYc, $posZc, $colR, $colG, $colB){
+	$_SESSION['objList'][] = "tri;" . $posXa . ";" . $posYa . ";" . $posZa . ";". $posXb . ";" . $posYb . ";" . $posZb . ";". $posXc . ";" . $posYc . ";" . $posZc . ";" . $colR . ";" . $colG . ";" . $colB . "\n";
+}
+function AddQuadri($posXa, $posYa, $posZa, $posXb, $posYb, $posZb, $posXc, $posYc, $posZc, $posXd, $posYd, $posZd, $colR, $colG, $colB){
+	$_SESSION['objList'][] = "qua;" . $posXa . ";" . $posYa . ";" . $posZa . ";". $posXb . ";" . $posYb . ";" . $posZb . ";". $posXc . ";" . $posYc . ";" . $posZc . ";" . $posXd . ";" . $posYd . ";" . $posZd . ";" . $colR . ";" . $colG . ";" . $colB . "\n";
+}
 function AddLight($type, $intensity, $posX, $posY, $posZ){
 	$_SESSION['lightList'][] = $type . ";" . $intensity . ";" . $posX . ";" . $posY . ";" . $posZ . "\n";
 }
@@ -29,6 +35,16 @@ if(isset($_POST['submit'])){
 
 if(isset($_POST['submitSphere'])){
 		AddSphere($_POST['posX'], $_POST['posY'], $_POST['posZ'], $_POST['radius'], $_POST['colR'], $_POST['colG'], $_POST['colB']);
+		$_SESSION['objCount'] = count($_SESSION['objList'])+1;
+}
+
+if(isset($_POST['submitTriangle'])){
+		AddTriangle($_POST['posTriXa'], $_POST['posTriYa'], $_POST['posTriZa'], $_POST['posTriXb'], $_POST['posTriYb'], $_POST['posTriZb'], $_POST['posTriXc'], $_POST['posTriYc'], $_POST['posTriZc'], $_POST['colR'], $_POST['colG'], $_POST['colB']);
+		$_SESSION['objCount'] = count($_SESSION['objList'])+1;
+}
+
+if(isset($_POST['submitQuadri'])){
+		AddQuadri($_POST['posQuadXa'], $_POST['posQuadYa'], $_POST['posQuadZa'], $_POST['posQuadXb'], $_POST['posQuadYb'], $_POST['posQuadZb'], $_POST['posQuadXc'], $_POST['posQuadYc'], $_POST['posQuadZc'], $_POST['posQuadXd'], $_POST['posQuadYd'], $_POST['posQuadZd'], $_POST['colR'], $_POST['colG'], $_POST['colB']);
 		$_SESSION['objCount'] = count($_SESSION['objList'])+1;
 }
 
@@ -95,6 +111,33 @@ if(isset($_POST['submitLight'])){
 				<input type="number" name="colR" value="0" min="-0" max="255" required> <input type="number" name="colG" value="2" min="-0" max="255" required> <input type="number" name="colB" value="10" min="-0" max="255" required>
 
 				<div class="submit"><input type="submit" name="submitSphere" value="Ajouter une sphère"></div>
+			</fieldset><br>
+			<fieldset>
+				<legend>Ajouter un Triangle</legend>
+				Position du point n°1 du triangle :
+				<input type="number" name="posTriXa" value="0" min="-1000" max="1000" required> <input type="number" name="posTriYa" value="2" min="-1000" max="1000" required> <input type="number" name="posTriZa" value="10" min="-1000" max="1000" required><br><br>
+				Position du point n°2 du triangle :
+				<input type="number" name="posTriXb" value="0" min="-1000" max="1000" required> <input type="number" name="posTriYb" value="2" min="-1000" max="1000" required> <input type="number" name="posTriZb" value="10" min="-1000" max="1000" required><br><br>
+				Position du point n°3 du triangle :
+				<input type="number" name="posTriXc" value="0" min="-1000" max="1000" required> <input type="number" name="posTriYc" value="2" min="-1000" max="1000" required> <input type="number" name="posTriZc" value="10" min="-1000" max="1000" required><br><br>
+				<br>Couleur (RGB) :
+				<input type="number" name="colTriR" value="0" min="-0" max="255" required> <input type="number" name="colTriG" value="2" min="-0" max="255" required> <input type="number" name="colTriB" value="10" min="-0" max="255" required>
+				<div class="submit"><input type="submit" name="submitTriangle" value="Ajouter un triangle"></div>
+			</fieldset><br>
+			<fieldset>
+				<legend>Ajouter un Quadrilatère</legend>
+				Position du point n°1 du quadrilatère :
+				<input type="number" name="posQuadXa" value="0" min="-1000" max="1000" required> <input type="number" name="posQuadYa" value="2" min="-1000" max="1000" required> <input type="number" name="posQuadZa" value="10" min="-1000" max="1000" required><br><br>
+				Position du point n°2 du quadrilatère :
+				<input type="number" name="posQuadXb" value="0" min="-1000" max="1000" required> <input type="number" name="posQuadYb" value="2" min="-1000" max="1000" required> <input type="number" name="posQuadZb" value="10" min="-1000" max="1000" required><br><br>
+				Position du point n°3 du quadrilatère :
+				<input type="number" name="posQuadXc" value="0" min="-1000" max="1000" required> <input type="number" name="posQuadYc" value="2" min="-1000" max="1000" required> <input type="number" name="posQuadZc" value="10" min="-1000" max="1000" required><br><br>
+				Position du point n°4 du quadrilatère :
+				<input type="number" name="posQuadXd" value="0" min="-1000" max="1000" required> <input type="number" name="posQuadYd" value="2" min="-1000" max="1000" required> <input type="number" name="posQuadZd" value="10" min="-1000" max="1000" required><br><br>
+				<br>Couleur (RGB) :
+				<input type="number" name="colQuadR" value="0" min="-0" max="255" required> <input type="number" name="colQuadG" value="2" min="-0" max="255" required> <input type="number" name="colQuadB" value="10" min="-0" max="255" required>
+
+				<div class="submit"><input type="submit" name="submitQuadri" value="Ajouter un quadrilatère"></div>
 			</fieldset>
 			<br>
 		</form>
