@@ -43,7 +43,7 @@ Vector3 checkPolygone(Ray ray, int nbPts, Vector3 * pts){
 	return inter;
 }
 
-Vector3 CollideWithGround(Ray ray, Vector3 normale, Vector3 center, Vector3 size) {
+Vector3 CollideWithGround(Ray ray, Vector3 normale, Vector3 center) {
 	Vector3 inter = { 0,0,0,1 };
 	normale = normalizeVector(normale);
 	double d = ScalarVector(normale, ray.direction);

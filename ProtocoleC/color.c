@@ -1,5 +1,6 @@
 #include "color.h"
 #include "mathC.h"
+#include "ray.h"
 
 Color ApplyLightEffect(Color c, float intensity) {
 	Color color;
@@ -39,4 +40,13 @@ Color RemColor(Color a, Color b) {
 	color.b = minValue(a.b - b.b, 0);
 
 	return color;
+}
+
+Color getNormalShadow(Color defaultC, Vector3 dir, Vector3 normale) {
+	Color col;
+
+	Color c = ApplyLightEffect(defaultC, 4 * getLightIntensity(dir, normale));
+	col = RemColor(c, defaultC);
+
+	return col;
 }

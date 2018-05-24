@@ -10,11 +10,22 @@ float getLightIntensity(Vector3 L, Vector3 normal) {
 	return intensity;
 }
 
-float getLightIntensity2(Ray ray, Vector3 normale) {
+int getLightIntensity2(Ray ray, Vector3 normale) {
 	Vector3 V = InvertVector(ray.direction);
 	Vector3 L = ray.direction;
 
-	float val = 0;
-	val = 0.6 * maxValue(0, ScalarVector(normale, L));
+	int val = 0;
+	val = (int) (60 * maxValue(0, ScalarVector(normale, L)));
+	//printf("%d\n", val);
+	return val;
+}
+
+int getSpecularEffect(Ray ray, Vector3 normale) {
+	Vector3 V = normalizeVector(InvertVector(ray.direction));
+	Vector3 H = AddVector(V, normale);
+
+	int val = 0;
+	val = (int)(maxValue(0, ScalarVector(normale, H)));
+	//printf("%d\n", val);
 	return val;
 }

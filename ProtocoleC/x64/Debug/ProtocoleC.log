@@ -1,5 +1,4 @@
-﻿  file.c
-d:\documents\protocolec\protocolec\file.c(47): warning C4013: 'strcmp' non défini(e) ; extern retournant int pris par défaut
-d:\documents\protocolec\protocolec\file.c(36): warning C4477: 'fscanf' : la chaîne de format '%d' nécessite un argument de type 'int *', mais l'argument variadique 1 est de type 'int'
-d:\documents\protocolec\protocolec\file.c(73): warning C4701: variable locale 'scene' potentiellement non initialisée utilisée
+﻿  light.c
+d:\documents\protocolec\protocolec\light.c(8): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\documents\protocolec\protocolec\light.c(14): warning C4101: 'V' : variable locale non référencée
   ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe

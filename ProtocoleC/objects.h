@@ -17,7 +17,6 @@ typedef struct object {
 	double radius;
 
 	// Specific to CUBE & PLAN
-	Vector3 size;
 	Vector3 normale;
 	Poly poly;
 
@@ -26,7 +25,7 @@ typedef struct object {
 } Object;
 
 Vector3 checkPolygone(Ray ray, int nbPts, Vector3 * pts);
-Vector3 CollideWithGround(Ray ray, Vector3 normale, Vector3 center, Vector3 size);
+Vector3 CollideWithGround(Ray ray, Vector3 normale, Vector3 center);
 Vector3 CollideWithSphere(Ray ray, Vector3 orig, int radius);
 int coplanar(Vector3 a, Vector3 b, Vector3 c);
 Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3);

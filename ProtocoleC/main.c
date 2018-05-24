@@ -33,14 +33,14 @@ int main(int argc, char *argv[]) {
 			intersection.empty = 1; // Aucun objet n'a été touché par défaut
 			Object intersectedObject;
 			for (int i = 0; i < scene.objectsCount; i++) { // Pour tout les objets de la scène
-				Vector3 tempIntersect;
+				Vector3 tempIntersect = { 0, 0, 0, 1 };
 				Object tempObj;
 				if (strcmp(scene.object[i].type, "sph") == 0) { // Si l'objet est une sphere
 					tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].radius);
 					tempObj = scene.object[i];
 				}
-				if (strcmp(scene.object[i].type, "sol") == 0) { // Si l'objet est un sol
-					tempIntersect = CollideWithGround(ray, scene.object[i].normale, scene.object[i].position, scene.object[i].size);
+				if (strcmp(scene.object[i].type, "gro") == 0) { // Si l'objet est un sol
+					tempIntersect = CollideWithGround(ray, scene.object[i].normale, scene.object[i].position);
 					tempObj = scene.object[i];
 				}
 
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
 				Color col = { 0,0,0 };
 
 				// ------------------------------------------------------ Afficher le sol de base (sol)
-				if (strcmp(intersectedObject.type, "sol") == 0) {
+				if (strcmp(intersectedObject.type, "gro") == 0) {
 					int x = (int)abs(intersection.x) % 4;
 					int y = (int)abs(intersection.z) % 4;
 
@@ -88,7 +88,8 @@ int main(int argc, char *argv[]) {
 				Ray ray2;
 				ray2.position = AddVector(intersection, MultiplyVector(normale, 0.01)); // AddVector(intersection, intersectedObject.position);
 
-				for (int i = 0; i < scene.lightsCount; i++) {
+				int intersectWithLight = 0;
+				for (int i = 0; i < scene.lightsCount; i++) { // TEMPORAIREMENT UNE SEULE LUMIERE CAR LE CODE PR LES OMBRES EST FAIR PR UNE SEULE LUMIERE WOLAAAA !!!!!!!!!!!!
 					ray2.direction = normalizeVector(SubVector(scene.light[i].position, intersection));
 
 					// VERIFIER SI L'OBJET PEUT ATTEINDRE LA LUMIERE
@@ -105,23 +106,37 @@ int main(int argc, char *argv[]) {
 
 					// SI LE RAYON ATTEINT LA LUMIERE
 					if (canTouchLight.empty == 1) {
+						intersectWithLight = 1;
 						if(col.r == 0 && col.g == 0 && col.b == 0) // Appliquer la couleur de base si au moins une lumière atteint l'objet
 							col = AddColor(col, intersectedObject.color);
 
 						// SI C'EST UNE LUMIERE NORMALE
 						if (strcmp(scene.light[i].type, "nor") == 0) {
-							col = ApplyLightEffect(col, 4 * getLightIntensity(ray2.direction, normale));
+							if (strcmp(intersectedObject.type, "gro") != 0) //Si ce n'est pas le sol
+								//col = ApplyLightEffect(intersectedObject.color, 4 * getLightIntensity(ray2.direction, normale));
+								col = AddColorInt(col, getLightIntensity2(ray2, normale));
 						}
 
 						// SI C'EST UNE LUMIERE SPECULAIRE
 						if (strcmp(scene.light[i].type, "spe") == 0) {
-
+							if (strcmp(intersectedObject.type, "gro") != 0)
+								col = AddColorInt(col, getSpecularEffect(ray2, normale));
 						}
 
 						// SI C'EST UNE LUMIERE QUI FAIT LES DEUX
 						if (strcmp(scene.light[i].type, "all") == 0) {
-							col = ApplyLightEffect(col, 4 * getLightIntensity(ray2.direction, normale));
+							if (strcmp(intersectedObject.type, "gro") != 0) { //Si ce n'est pas le sol
+								//col = ApplyLightEffect(intersectedObject.color, 4 * getLightIntensity(ray2.direction, normale));
+								col = AddColorInt(col, getLightIntensity2(ray2, normale));
+								col = AddColorInt(col, getSpecularEffect(ray2, normale));
+							}
 						}
+					}
+
+					if (intersectWithLight == 0) { // SI AUCUNE LUMIERE N'A ETE TOUCHE
+						col.r = 0;
+						col.g = 0;
+						col.b = 0;
 					}
 				}
 				pixelColor.r = col.r;
