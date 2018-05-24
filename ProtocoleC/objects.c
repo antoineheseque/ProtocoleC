@@ -7,31 +7,31 @@
 Vector3 checkPolygone(Ray ray, int nbPts, Vector3 * pts){
 	Vector3 inter;
 	if(nbPts == 3){
-		inter = intersect(ray, pts[0], pts[1], , pts[2]);
+		inter = intersect(ray, pts[0], pts[1], pts[2]);
 		if(inter.empty == 0){
 			return inter;
 		}
 	}
 	else if(nbPts == 4){
-		intersect(ray, pts[0], pts[1], , pts[2]);
+		inter = intersect(ray, pts[0], pts[1], pts[2]);
 		if(inter.empty == 0){
 			return inter;
 		}
-		intersect(ray, pts[0], pts[2], , pts[3]);
+		inter = intersect(ray, pts[0], pts[2], pts[3]);
 		if(inter.empty == 0){
 			return inter;
 		}
 	}
 	else if(nbPts == 5){
-		intersect(ray, pts[0], pts[1], , pts[2]);
+		inter = intersect(ray, pts[0], pts[1], pts[2]);
 		if(inter.empty == 0){
 			return inter;
 		}
-		intersect(ray, pts[0], pts[2], , pts[4]);
+		inter = intersect(ray, pts[0], pts[2], pts[4]);
 		if(inter.empty == 0){
 			return inter;
 		}
-		intersect(ray, pts[2], pts[3], , pts[4]);
+		inter = intersect(ray, pts[2], pts[3], pts[4]);
 		if(inter.empty == 0){
 			return inter;
 		}
@@ -63,7 +63,7 @@ Vector3 CollideWithPlan(Ray ray, Vector3 normale, Vector3 center, Vector3 size) 
 	}
 	//printf("%.2f \n", d);
 
-	
+
 	return(inter);
 }
 
@@ -74,7 +74,7 @@ Vector3 CollideWithPlan(Ray ray, Vector3 normale, Vector3 center, Vector3 size) 
 	int b = (p2.z - p1.z)*(p3.x - p1.x)-(p2.x - p1.x)*(p3.z - p1.z);
 	int c = (p2.x - p1.x)*(p3.y - p1.y)-(p2.y - p1.y)*(p3.x - p1.x);
 	int t = (-a * ray.position.x - b * ray.position.y - c * ray.position.z) / (ray.direction.x * a + ray.direction.y * b + ray.direction.y * c);
-	
+
 	if (t >= 0){ //il y a intersection entre le rayon et le plan
 		inter.x = ray.position.y + ray.direction.y * t;
 		inter.y = ray.position.x + ray.direction.x * t;
@@ -88,7 +88,7 @@ Vector3 CollideWithPlan(Ray ray, Vector3 normale, Vector3 center, Vector3 size) 
 
 Vector3 CollideWithSphere(Ray ray, Vector3 orig, int radius){
 	Vector3 inter = { 0,0,0,1 };
-	
+
 	Vector3 m = SubVector(ray.position,orig);
 	double b = ScalarVector(m, ray.direction);
 	double c = ScalarVector(m, m) - radius * radius;
@@ -97,11 +97,11 @@ Vector3 CollideWithSphere(Ray ray, Vector3 orig, int radius){
 		return inter;
 
 	float discr = b * b - c;
-	if (discr < 0.0f) 
+	if (discr < 0.0f)
 		return inter;
 
 	double t = -b - sqrt(discr);
-	
+
 	inter.x = ray.position.x + ray.direction.x * t;
 	inter.y = ray.position.y + ray.direction.y * t;
 	inter.z = ray.position.z + ray.direction.z * t;
@@ -116,7 +116,7 @@ Vector3 CollideWithSphere(Ray ray, Vector3 orig, int radius){
 
 	if(result = 0){
 		return 1;
-	} 
+	}
 	else{
 		return 0;
 	}
