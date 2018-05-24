@@ -1,10 +1,24 @@
-﻿  main.c
+﻿cl : Ligne de commande warning D9028: échec de la régénération minimale, passage à la génération normale
+  camera.c
+  file.c
+d:\documents\protocolec\protocolec\file.c(42): warning C4013: 'strcmp' non défini(e) ; extern retournant int pris par défaut
+  main.c
 d:\documents\protocolec\protocolec\main.c(38): warning C4013: 'strcmp' non défini(e) ; extern retournant int pris par défaut
 d:\documents\protocolec\protocolec\main.c(39): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(69): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(93): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
-d:\documents\protocolec\protocolec\main.c(82): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 1 est de type 'double'
+d:\documents\protocolec\protocolec\main.c(77): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(111): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
+d:\documents\protocolec\protocolec\main.c(99): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+  objects.c
+d:\documents\protocolec\protocolec\objects.c(46): warning C4100: 'size' : paramètre formel non référencé
+d:\documents\protocolec\protocolec\objects.c(61): warning C4101: 'diff' : variable locale non référencée
+d:\documents\protocolec\protocolec\objects.c(103): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\documents\protocolec\protocolec\objects.c(119): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+  scene.c
+  Génération de code en cours...
+d:\documents\protocolec\protocolec\objects.c(43): warning C4701: variable locale 'inter' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\objects.c(121): warning C4706: assignation au sein d'une expression conditionnelle
 d:\documents\protocolec\protocolec\main.c(47): warning C4701: variable locale 'tempIntersect' potentiellement non initialisée utilisée
 d:\documents\protocolec\protocolec\main.c(50): warning C4701: variable locale 'tempObj' potentiellement non initialisée utilisée
-d:\documents\protocolec\protocolec\main.c(67): warning C4701: variable locale 'intersectedObject' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\main.c(66): warning C4701: variable locale 'intersectedObject' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\file.c(67): warning C4701: variable locale 'scene' potentiellement non initialisée utilisée
   ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe

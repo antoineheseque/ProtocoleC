@@ -129,14 +129,13 @@ int coplanar(Vector3 a, Vector3 b, Vector3 c){
 Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 
 	Vector3 inter;
-	int t;
-	int area;
-	int ab,bc,ca;
+	double area;
+	double ab,bc,ca;
 	//calcul de l'équation de la droite de la forme ax + by + cz + d = 0
-	int a = (v2.y - v1.y)*(v3.z - v1.z)-(v2.z - v1.z)*(v3.y - v1.y);
-	int b = (v2.z - v1.z)*(v3.x - v1.x)-(v2.x - v1.x)*(v3.z - v1.z);
-	int c = (v2.x - v1.x)*(v3.y - v1.y)-(v2.y - v1.y)*(v3.x - v1.x);
-	int t = (-a * ray.position.x - b * ray.position.y - c * ray.position.z) / (ray.direction.x * a + ray.direction.y * b + ray.direction.y * c);
+	double a = (v2.y - v1.y)*(v3.z - v1.z)-(v2.z - v1.z)*(v3.y - v1.y);
+	double b = (v2.z - v1.z)*(v3.x - v1.x)-(v2.x - v1.x)*(v3.z - v1.z);
+	double c = (v2.x - v1.x)*(v3.y - v1.y)-(v2.y - v1.y)*(v3.x - v1.x);
+	double t = (-a * ray.position.x - b * ray.position.y - c * ray.position.z) / (ray.direction.x * a + ray.direction.y * b + ray.direction.y * c);
 
 	if (t >= 0){ //il y a intersection entre le rayon et le plan
 		//coordonnées du point d'intersection
@@ -145,9 +144,9 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 		inter.z = ray.position.z + ray.direction.z * t;
 
 		//calcul de la longueur des cotés
-		ab = DistVector(a,b);
-		bc = DistVector(b,c);
-		ca = DistVector(c,a);
+		ab = DistVector(v1,v2);
+		bc = DistVector(v2,v3);
+		ca = DistVector(v3,v1);
 
 		//calcul de l'aire totale du triangle
 		area = sqrt( ((ab + bc + ca)/2) * ((-ab + bc + ca)/2) * ((ab - bc + ca)/2) * ((ab + bc - ca)/2) );

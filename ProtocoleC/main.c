@@ -61,13 +61,31 @@ int main(int argc, char *argv[]) {
 				Vector3 L = SubVector(scene.light.position,intersection);
 				Vector3 normal = intersection;
 
-				col = ApplyLightEffect(col, 4*getLightIntensity(L, normal));
 				//printf("%f\n", getLightIntensity(L, normal));
 				Ray ray2;
 				ray2.position = AddVector(intersection, intersectedObject.position);
 				ray2.direction = normalizeVector(normal);
-				Vector3 canTouchLight = CollideWithSphere(ray2, intersectedObject.position, intersectedObject.radius);
-				if (canTouchLight.empty == 1) {
+				ray2.position = AddVector(ray2.position, normalizeVector(normal));
+
+				// 0 = TOUCHER UN OBJ
+				// 1 = TOUCHER AUCUN OBJ
+
+				Vector3 canTouchLight = { 0,0,0,1 };
+				for (int i = 0; i < scene.objectsCount; i++) {
+					Vector3 temp = { 0,0,0,1 };
+					if (strcmp(scene.object[i].type, "sph") == 0) { 
+						temp = CollideWithSphere(ray2, scene.object[i].position, scene.object[i].radius);
+					}
+
+					if (canTouchLight.empty == 1 && temp.empty == 0)
+						canTouchLight = temp;
+				}
+
+				//printf("%d \n", canTouchLight.empty);
+
+				if (canTouchLight.empty == 1) { // Si le rayon entre l'obj touché et la lumière n'est pas coupé
+					if (strcmp(intersectedObject.type, "sph") == 0)
+						col = ApplyLightEffect(col, 4 * getLightIntensity(L, normal));
 					pixelColor.r = col.r;
 					pixelColor.g = col.g;
 					pixelColor.b = col.b;
@@ -78,8 +96,8 @@ int main(int argc, char *argv[]) {
 				}
 			}
 			else {
-				double c = 127 * cos(ray.direction.y * 100 / 360) + 127;
-				printf("%d\n", c);
+				int c = 127 * cos(ray.direction.y * 100 / 360) + 127;
+				//printf("%d\n", c);
 				pixelColor.r = 0;
 				pixelColor.g = 0;
 				pixelColor.b = (int) c;
