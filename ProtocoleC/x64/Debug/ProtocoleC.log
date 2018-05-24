@@ -1,16 +1,16 @@
 ﻿  main.c
 d:\documents\protocolec\protocolec\main.c(38): warning C4013: 'strcmp' non défini(e) ; extern retournant int pris par défaut
 d:\documents\protocolec\protocolec\main.c(39): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(63): warning C4456: la déclaration de 'x' masque la déclaration locale précédente
+d:\documents\protocolec\protocolec\main.c(64): warning C4456: la déclaration de 'x' masque la déclaration locale précédente
   d:\documents\protocolec\protocolec\main.c(27): note: voir la déclaration de 'x'
-d:\documents\protocolec\protocolec\main.c(63): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(64): warning C4456: la déclaration de 'y' masque la déclaration locale précédente
-  d:\documents\protocolec\protocolec\main.c(26): note: voir la déclaration de 'y'
 d:\documents\protocolec\protocolec\main.c(64): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(95): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(130): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
-d:\documents\protocolec\protocolec\main.c(118): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(63): warning C4701: variable locale 'intersection' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\main.c(65): warning C4456: la déclaration de 'y' masque la déclaration locale précédente
+  d:\documents\protocolec\protocolec\main.c(26): note: voir la déclaration de 'y'
+d:\documents\protocolec\protocolec\main.c(65): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(91): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(127): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
+d:\documents\protocolec\protocolec\main.c(115): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(64): warning C4701: variable locale 'intersection' potentiellement non initialisée utilisée
 d:\documents\protocolec\protocolec\main.c(47): warning C4701: variable locale 'tempIntersect' potentiellement non initialisée utilisée
 d:\documents\protocolec\protocolec\main.c(50): warning C4701: variable locale 'tempObj' potentiellement non initialisée utilisée
 d:\documents\protocolec\protocolec\main.c(60): warning C4701: variable locale 'intersectedObject' potentiellement non initialisée utilisée

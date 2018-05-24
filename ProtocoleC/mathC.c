@@ -11,13 +11,13 @@ Vector3 normalizeVector(Vector3 vec)
 	return normalized;
 }
 
-int minValue(int a, int b) {
+double minValue(double a, double b) {
 	if (a > b)
 		return b;
 	return a;
 }
 
-int maxValue(int a, int b) {
+double maxValue(double a, double b) {
 	if (a < b)
 		return b;
 	return a;
@@ -47,6 +47,22 @@ Vector3 ProductVector(Vector3 a, Vector3 b) {
 	vector.y = (a.z*b.x) - (a.x*b.z);
 	vector.y = (a.x*b.y) - (a.y*b.x);
 
+	return vector;
+}
+
+Vector3 MultiplyVector(Vector3 a, double val) {
+	Vector3 vector;
+	vector.x = a.x*val;
+	vector.y = a.y*val;
+	vector.z = a.z*val;
+	return vector;
+}
+
+Vector3 InvertVector(Vector3 vec) {
+	Vector3 vector;
+	vector.x = -vec.x;
+	vector.y = -vec.y;
+	vector.z = -vec.z;
 	return vector;
 }
 

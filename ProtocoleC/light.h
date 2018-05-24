@@ -2,6 +2,7 @@
 #define DEF_LIGHT
 
 #include "color.h"
+#include "ray.h"
 
 typedef struct light {
   int add;
@@ -11,4 +12,5 @@ typedef struct light {
 } Light;
 
 float getLightIntensity(Vector3 L, Vector3 normal);
+float getLightIntensity2(Ray ray, Vector3 normale);
 #endif

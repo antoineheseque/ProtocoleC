@@ -16,11 +16,13 @@ typedef struct matrix44 {
 } Matrix44;
 
 Vector3 normalizeVector(Vector3 vec);
-int minValue(int a, int b);
-int maxValue(int a, int b);
+double minValue(double a, double b);
+double maxValue(double a, double b);
 Vector3 AddVector(Vector3 a, Vector3 b);
 Vector3 SubVector(Vector3 a, Vector3 b);
 Vector3 ProductVector(Vector3 a, Vector3 b);
+Vector3 InvertVector(Vector3 vec);
+Vector3 MultiplyVector(Vector3 a, double val);
 double ScalarVector(Vector3 a, Vector3 b);
 double LengthVector(Vector3 a);
 double DistVector(Vector3 a, Vector3 b);
