@@ -4,8 +4,8 @@ session_start();
 function AddSphere($posX, $posY, $posZ, $radius, $colR, $colG, $colB){
 	$_SESSION['objList'][] = "sph;" . $posX . ";" . $posY . ";" . $posZ . ";" . $radius . ";" . $colR . ";" . $colG . ";" . $colB . "\n";
 }
-function AddLight($type, $posX, $posY, $posZ){
-	$_SESSION['lightList'][] = $type. ";" . $posX . ";" . $posY . ";" . $posZ . "\n";
+function AddLight($type, $intensity, $posX, $posY, $posZ){
+	$_SESSION['lightList'][] = $type . ";" . $intensity . ";" . $posX . ";" . $posY . ";" . $posZ . "\n";
 }
 
 if(isset($_POST['submit'])){
@@ -33,7 +33,7 @@ if(isset($_POST['submitSphere'])){
 }
 
 if(isset($_POST['submitLight'])){
-		AddLight($_POST['type'], $_POST['posLumX'], $_POST['posLumY'], $_POST['posLumZ']);
+		AddLight($_POST['type'], $_POST['intensity'] , $_POST['posLumX'], $_POST['posLumY'], $_POST['posLumZ']);
 		$_SESSION['lightCount'] = count($_SESSION['lightList'])+1;
 }
 
@@ -82,6 +82,8 @@ if(isset($_POST['submitLight'])){
 				</select>
 				Position de la source :
 				<input type="number" name="posLumX" value="-5" min="-1000" max="1000" required> <input type="number" name="posLumY" value="10" min="-1000" max="1000" required> <input type="number" name="posLumZ" value="10" min="-1000" max="1000" required><br><br>
+				Position de la source :
+				<input type="number" name="intensity" value="2" min="0.1" max="6" required>
 				<div class="submit"><input type="submit" name="submitLight" value="Ajouter une source lumineuse"></div>
 			</fieldset><br>
 			<fieldset>
