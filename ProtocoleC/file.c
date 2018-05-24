@@ -48,13 +48,13 @@ Scene readFile() {
 			}
 			else if (strcmp(objects[i].type, "pol") == 0) {
 				fscanf(fichier, ";%d", &objects[i].poly.nbPts);
-				objects[i].poly.pts = malloc(objects[i].poly.nbPts * sizeof(Vector3));
+				objects[i].poly.pts = (Vector3 *) malloc(objects[i].poly.nbPts * sizeof(Vector3));
 				for(int j = 0; j < objects[i].poly.nbPts; j++){
 					fscanf(fichier, ";%lf;%lf;%lf", &objects[i].poly.pts[j].x, &objects[i].poly.pts[j].y, &objects[i].poly.pts[j].z);
 				}
 				fscanf(fichier, ";%d;%d;%d", &objects[i].color.r, &objects[i].color.g, &objects[i].color.b);
 			}
-			
+
 		}
 		scene.objectsCount = nbObjects;
 		scene.camera = cam;

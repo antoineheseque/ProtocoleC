@@ -6,12 +6,14 @@
 
 Vector3 checkPolygone(Ray ray, int nbPts, Vector3 * pts){
 	Vector3 inter;
+	//si c'est un triangle
 	if(nbPts == 3){
 		inter = intersect(ray, pts[0], pts[1], pts[2]);
 		if(inter.empty == 0){
 			return inter;
 		}
 	}
+	//si c'est un quadrilatère
 	else if(nbPts == 4){
 		inter = intersect(ray, pts[0], pts[1], pts[2]);
 		if(inter.empty == 0){
@@ -22,6 +24,7 @@ Vector3 checkPolygone(Ray ray, int nbPts, Vector3 * pts){
 			return inter;
 		}
 	}
+	//si c'est un pentagone
 	else if(nbPts == 5){
 		inter = intersect(ray, pts[0], pts[1], pts[2]);
 		if(inter.empty == 0){
@@ -36,6 +39,7 @@ Vector3 checkPolygone(Ray ray, int nbPts, Vector3 * pts){
 			return inter;
 		}
 	}
+	
 	return inter;
 }
 
@@ -133,7 +137,7 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 	int b = (v2.z - v1.z)*(v3.x - v1.x)-(v2.x - v1.x)*(v3.z - v1.z);
 	int c = (v2.x - v1.x)*(v3.y - v1.y)-(v2.y - v1.y)*(v3.x - v1.x);
 	int t = (-a * ray.position.x - b * ray.position.y - c * ray.position.z) / (ray.direction.x * a + ray.direction.y * b + ray.direction.y * c);
-	
+
 	if (t >= 0){ //il y a intersection entre le rayon et le plan
 		//coordonnées du point d'intersection
 		inter.x = ray.position.y + ray.direction.y * t;
@@ -148,7 +152,7 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 		//calcul de l'aire totale du triangle
 		area = sqrt( ((ab + bc + ca)/2) * ((-ab + bc + ca)/2) * ((ab - bc + ca)/2) * ((ab + bc - ca)/2) );
 
-		
+
 
 
 	}
