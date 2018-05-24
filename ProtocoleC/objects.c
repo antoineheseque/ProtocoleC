@@ -71,25 +71,6 @@ Vector3 CollideWithPlan(Ray ray, Vector3 normale, Vector3 center, Vector3 size) 
 	return(inter);
 }
 
-/*Vector3 CollideWithPlan(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3){
-	Vector3 inter;
-	int x,y,z;
-	int a = (p2.y - p1.y)*(p3.z - p1.z)-(p2.z - p1.z)*(p3.y - p1.y);
-	int b = (p2.z - p1.z)*(p3.x - p1.x)-(p2.x - p1.x)*(p3.z - p1.z);
-	int c = (p2.x - p1.x)*(p3.y - p1.y)-(p2.y - p1.y)*(p3.x - p1.x);
-	int t = (-a * ray.position.x - b * ray.position.y - c * ray.position.z) / (ray.direction.x * a + ray.direction.y * b + ray.direction.y * c);
-
-	if (t >= 0){ //il y a intersection entre le rayon et le plan
-		inter.x = ray.position.y + ray.direction.y * t;
-		inter.y = ray.position.x + ray.direction.x * t;
-		inter.z = ray.position.z + ray.direction.z * t;
-	}
-	else{
-		inter.empty = 1;
-	}
-	return(inter);
-}*/
-
 Vector3 CollideWithSphere(Ray ray, Vector3 orig, int radius){
 	Vector3 inter = { 0,0,0,1 };
 
@@ -128,7 +109,7 @@ int coplanar(Vector3 a, Vector3 b, Vector3 c){
 
 Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 
-	Vector3 inter;
+	Vector3 inter = { 0,0,0,1 };
 	double area, area1, area2, area3, areaTot;
 	double ab,bc,ca;
 	double p, p1, p2, p3;
@@ -175,20 +156,14 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 		areaTot = area1 + area2 + area3;
 
 		if (areaTot == area){ //si la somme des aire des 3 sous divisions est égale à l'aire du triangle le point d'intersection est bien dans le triangle
-			
-			return 1;
-
+			inter.empty = 0;
 		}
-
-		else{
-			return 0;
-		}
-
-		}
+	}
 
 	else{
 
 		//si le t est inférieur à 0 on retourne 1
 		inter.empty = 1;
 	}
+	return inter;
 }

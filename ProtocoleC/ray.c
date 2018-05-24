@@ -22,8 +22,8 @@ Ray getPerspectiveCam(Camera cam, int x, int y) {
 	ray.position = pos;
 
 	Vector3 dir;
-	dir.x = ((double) (cam.screenWidth / 2) - x) / 90;
-	dir.y = ((double) (cam.screenHeight / 2) - y) / 90;
+	dir.x = ((double) (cam.screenWidth / 2) - x + 0.5) / 90;
+	dir.y = ((double) (cam.screenHeight / 2) - y + 0.5) / 90;
 	dir.z = 10;
 
 	dir = normalizeVector(dir);

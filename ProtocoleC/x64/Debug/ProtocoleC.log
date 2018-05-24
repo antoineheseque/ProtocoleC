@@ -1,24 +1,17 @@
-﻿cl : Ligne de commande warning D9028: échec de la régénération minimale, passage à la génération normale
-  camera.c
-  file.c
-d:\documents\protocolec\protocolec\file.c(42): warning C4013: 'strcmp' non défini(e) ; extern retournant int pris par défaut
-  main.c
+﻿  main.c
 d:\documents\protocolec\protocolec\main.c(38): warning C4013: 'strcmp' non défini(e) ; extern retournant int pris par défaut
 d:\documents\protocolec\protocolec\main.c(39): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(77): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
-d:\documents\protocolec\protocolec\main.c(111): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
-d:\documents\protocolec\protocolec\main.c(99): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
-  objects.c
-d:\documents\protocolec\protocolec\objects.c(46): warning C4100: 'size' : paramètre formel non référencé
-d:\documents\protocolec\protocolec\objects.c(61): warning C4101: 'diff' : variable locale non référencée
-d:\documents\protocolec\protocolec\objects.c(103): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-d:\documents\protocolec\protocolec\objects.c(119): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
-  scene.c
-  Génération de code en cours...
-d:\documents\protocolec\protocolec\objects.c(43): warning C4701: variable locale 'inter' potentiellement non initialisée utilisée
-d:\documents\protocolec\protocolec\objects.c(121): warning C4706: assignation au sein d'une expression conditionnelle
+d:\documents\protocolec\protocolec\main.c(63): warning C4456: la déclaration de 'x' masque la déclaration locale précédente
+  d:\documents\protocolec\protocolec\main.c(27): note: voir la déclaration de 'x'
+d:\documents\protocolec\protocolec\main.c(63): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(64): warning C4456: la déclaration de 'y' masque la déclaration locale précédente
+  d:\documents\protocolec\protocolec\main.c(26): note: voir la déclaration de 'y'
+d:\documents\protocolec\protocolec\main.c(64): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(95): warning C4244: 'fonction' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(130): warning C4013: 'exportIMG' non défini(e) ; extern retournant int pris par défaut
+d:\documents\protocolec\protocolec\main.c(118): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+d:\documents\protocolec\protocolec\main.c(63): warning C4701: variable locale 'intersection' potentiellement non initialisée utilisée
 d:\documents\protocolec\protocolec\main.c(47): warning C4701: variable locale 'tempIntersect' potentiellement non initialisée utilisée
 d:\documents\protocolec\protocolec\main.c(50): warning C4701: variable locale 'tempObj' potentiellement non initialisée utilisée
-d:\documents\protocolec\protocolec\main.c(66): warning C4701: variable locale 'intersectedObject' potentiellement non initialisée utilisée
-d:\documents\protocolec\protocolec\file.c(67): warning C4701: variable locale 'scene' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\main.c(60): warning C4701: variable locale 'intersectedObject' potentiellement non initialisée utilisée
   ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe

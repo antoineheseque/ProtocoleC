@@ -58,14 +58,32 @@ int main(int argc, char *argv[]) {
 			}
 			if (intersection.empty == 0) { // Si un objet à été touché on change la couleur du pixel
 				Color col = intersectedObject.color;
-				Vector3 L = SubVector(scene.light.position,intersection);
+
+				if (strcmp(intersectedObject.type, "pla") == 0) {
+					int x = (int)abs(intersection.x) % 4;
+					int y = (int)abs(intersection.z) % 4;
+
+					if ((x > 2 && y > 2) || (x <= 2 && y <= 2)) {
+						col.r = 120;
+						col.g = 120;
+						col.b = 120;
+					}
+					else {
+						col.r = 200;
+						col.g = 200;
+						col.b = 200;
+					}
+				}
+
+				Vector3 L = SubVector(scene.light.position, intersection);
+				//L = normalizeVector(L);
 				Vector3 normal = intersection;
 
 				//printf("%f\n", getLightIntensity(L, normal));
 				Ray ray2;
-				ray2.position = AddVector(intersection, intersectedObject.position);
+				ray2.position = intersection;// AddVector(intersection, intersectedObject.position);
 				ray2.direction = normalizeVector(normal);
-				ray2.position = AddVector(ray2.position, normalizeVector(normal));
+				//ray2.position = AddVector(ray2.position, normalizeVector(normal));
 
 				// 0 = TOUCHER UN OBJ
 				// 1 = TOUCHER AUCUN OBJ
@@ -86,6 +104,7 @@ int main(int argc, char *argv[]) {
 				if (canTouchLight.empty == 1) { // Si le rayon entre l'obj touché et la lumière n'est pas coupé
 					if (strcmp(intersectedObject.type, "sph") == 0)
 						col = ApplyLightEffect(col, 4 * getLightIntensity(L, normal));
+					
 					pixelColor.r = col.r;
 					pixelColor.g = col.g;
 					pixelColor.b = col.b;
