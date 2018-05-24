@@ -82,8 +82,8 @@ if(isset($_POST['submitLight'])){
 				</select>
 				Position de la source :
 				<input type="number" name="posLumX" value="-5" min="-1000" max="1000" required> <input type="number" name="posLumY" value="10" min="-1000" max="1000" required> <input type="number" name="posLumZ" value="10" min="-1000" max="1000" required><br><br>
-				Position de la source :
-				<input type="number" name="intensity" value="2" min="0.1" max="6" required>
+				Intensité de la source :
+				<input type="number" name="intensity" value="2" min="0.1" max="6" step="0.1" required>
 				<div class="submit"><input type="submit" name="submitLight" value="Ajouter une source lumineuse"></div>
 			</fieldset><br>
 			<fieldset>
