@@ -8,5 +8,7 @@ typedef struct color {
 } Color;
 
 Color ApplyLightEffect(Color c, float intensity);
-Color AddColor(Color a, int b);
+Color AddColorInt(Color a, int b);
+Color AddColor(Color a, Color b);
+Color RemColor(Color a, Color b);
 #endif

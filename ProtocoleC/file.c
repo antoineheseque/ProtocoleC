@@ -27,12 +27,17 @@ Scene readFile() {
 	if (fichier != NULL)
 	{
 		Camera cam;
-		Light light;
+		Light * light = (Light *) malloc(sizeof(Light));
 		Object * objects = (Object *)malloc(sizeof(Object));
 		int nbObjects = 0;
+		int nbLights = 0;
 		fscanf(fichier, "%lf;%lf;%lf", &cam.position.x, &cam.position.y, &cam.position.z);
 		fscanf(fichier, "%lf;%lf;%lf", &cam.direction.x, &cam.direction.y, &cam.direction.z);
-		fscanf(fichier, "%d;%lf;%lf;%lf", &light.add, &light.position.x, &light.position.y, &light.position.z);
+		fscanf(fichier, "%d", nbLights);
+		for (int i = 0; i < nbLights; i++) {
+			light = realloc(light, sizeof(Light) * (i + 2));
+			fscanf(fichier, "%3s;%lf;%lf;%lf", &light[i].type, &light[i].position.x, &light[i].position.y, &light[i].position.z);
+		}
 		fscanf(fichier, "%d", &cam.screenWidth);
 		fscanf(fichier, "%d", &cam.screenHeight);
 		fscanf(fichier, "%d", &nbObjects);
@@ -57,10 +62,10 @@ Scene readFile() {
 			}
 			objects[i].position.x = -objects[i].position.x;
 		}
-		scene.objectsCount = nbObjects;
 		scene.camera = cam;
 		scene.objectsCount = nbObjects;
 		scene.object = objects;
+		scene.lightsCount = nbLights;
 		scene.light = light;
 	}
 

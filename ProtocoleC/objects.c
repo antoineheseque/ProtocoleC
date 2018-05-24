@@ -43,31 +43,22 @@ Vector3 checkPolygone(Ray ray, int nbPts, Vector3 * pts){
 	return inter;
 }
 
-Vector3 CollideWithPlan(Ray ray, Vector3 normale, Vector3 center, Vector3 size) {
+Vector3 CollideWithGround(Ray ray, Vector3 normale, Vector3 center, Vector3 size) {
 	Vector3 inter = { 0,0,0,1 };
-	//ray.position = normalizeVector(ray.position);
 	normale = normalizeVector(normale);
 	double d = ScalarVector(normale, ray.direction);
 	if (fabs(d) > 0.0001) {
 		Vector3 vec = SubVector(center, ray.position);
 		double t = ScalarVector(vec, normale) / d;
-		//printf("%.2f\n", t);
 		if (t >= 0) { //il y a intersection entre le rayon et le plan
 			inter.x = ray.position.x + ray.direction.x * t;
 			inter.y = ray.position.y + ray.direction.y * t;
 			inter.z = ray.position.z + ray.direction.z * t;
-			//printf("%.2f %.2f %.2f \n", inter.x, inter.y, inter.z);
 
 			Vector3 diff = SubVector(center, inter);
-			//if ((diff.x <= -(size.x / 2) || diff.x >= (size.x / 2))
-				//&& (diff.z <= -(size.z / 2) || diff.z >= (size.z / 2))) {
 				inter.empty = 0;
-			//}
 		}
 	}
-	//printf("%.2f \n", d);
-
-
 	return(inter);
 }
 

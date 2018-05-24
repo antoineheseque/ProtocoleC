@@ -7,7 +7,8 @@
 
 typedef struct scene {
 	Camera camera;
-	Light light;
+	int lightsCount;
+	Light * light;
 	int objectsCount;
 	Object * object;
 } Scene;

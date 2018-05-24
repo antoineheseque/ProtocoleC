@@ -26,11 +26,11 @@ int main(int argc, char *argv[]) {
 	for (int y = 0; y < scene.camera.screenHeight; y++) {
 		for (int x = 0; x < scene.camera.screenWidth; x++) {
 			Color pixelColor;
+
+			// Tracer le rayon et récupérer l'intersection
 			Ray ray = getRayFromPixel(scene.camera, x, y);
-			//printf("%.10f %0.10f %.10f\n", ray.direction.x, ray.direction.y, ray.direction.z);
-			//printf("%.10f %.10f %.10f", scene.camera.position.x, scene.camera.position.y, scene.camera.position.z);
 			Vector3 intersection;
-			intersection.empty = 1;
+			intersection.empty = 1; // Aucun objet n'a été touché par défaut
 			Object intersectedObject;
 			for (int i = 0; i < scene.objectsCount; i++) { // Pour tout les objets de la scène
 				Vector3 tempIntersect;
@@ -39,8 +39,8 @@ int main(int argc, char *argv[]) {
 					tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].radius);
 					tempObj = scene.object[i];
 				}
-				if (strcmp(scene.object[i].type, "pla") == 0) { // Si l'objet est une sphere
-					tempIntersect = CollideWithPlan(ray, scene.object[i].normale, scene.object[i].position, scene.object[i].size);
+				if (strcmp(scene.object[i].type, "sol") == 0) { // Si l'objet est un sol
+					tempIntersect = CollideWithGround(ray, scene.object[i].normale, scene.object[i].position, scene.object[i].size);
 					tempObj = scene.object[i];
 				}
 
@@ -56,11 +56,15 @@ int main(int argc, char *argv[]) {
 					}
 				}
 			}
-			if (intersection.empty == 0) { // Si un objet à été touché on change la couleur du pixel
-				Color col = intersectedObject.color;
 
-				// INFINITE PLANE COLOR
-				if (strcmp(intersectedObject.type, "pla") == 0) {
+			// Si un objet à été touché on change la couleur du pixel
+			if (intersection.empty == 0) { 
+
+				// Récupérer la couleur de base
+				Color col = { 0,0,0 };
+
+				// ------------------------------------------------------ Afficher le sol de base (sol)
+				if (strcmp(intersectedObject.type, "sol") == 0) {
 					int x = (int)abs(intersection.x) % 4;
 					int y = (int)abs(intersection.z) % 4;
 
@@ -75,45 +79,58 @@ int main(int argc, char *argv[]) {
 						col.b = 200;
 					}
 				}
+				// ------------------------------------------------------ FIN Afficher le sol de base (sol)
 
+
+
+				// -------------------------------------- APPLIQUER LES JEUX D'OMBRES ET DE LUMIERES
 				Vector3 normale = SubVector(intersection, intersectedObject.position);
 				Ray ray2;
 				ray2.position = AddVector(intersection, MultiplyVector(normale, 0.01)); // AddVector(intersection, intersectedObject.position);
-				ray2.direction = normalizeVector(SubVector(scene.light.position, intersection)); //normalizeVector(normal);
 
-				// 0 = TOUCHER UN OBJ
-				// 1 = TOUCHER AUCUN OBJ
+				for (int i = 0; i < scene.lightsCount; i++) {
+					ray2.direction = normalizeVector(SubVector(scene.light[i].position, intersection));
 
-				Vector3 canTouchLight = { 0,0,0,1 };
-				for (int i = 0; i < scene.objectsCount; i++) {
-					Vector3 temp = { 0,0,0,1 };
-					if (strcmp(scene.object[i].type, "sph") == 0) { 
-						temp = CollideWithSphere(ray2, scene.object[i].position, scene.object[i].radius);
+					// VERIFIER SI L'OBJET PEUT ATTEINDRE LA LUMIERE
+					Vector3 canTouchLight = { 0,0,0,1 };
+					for (int i = 0; i < scene.objectsCount; i++) {
+						Vector3 temp = { 0,0,0,1 };
+						if (strcmp(scene.object[i].type, "sph") == 0) {
+							temp = CollideWithSphere(ray2, scene.object[i].position, scene.object[i].radius);
+						}
+
+						if (canTouchLight.empty == 1 && temp.empty == 0)
+							canTouchLight = temp;
 					}
 
-					if (canTouchLight.empty == 1 && temp.empty == 0)
-						canTouchLight = temp;
-				}
+					// SI LE RAYON ATTEINT LA LUMIERE
+					if (canTouchLight.empty == 1) {
+						if(col.r == 0 && col.g == 0 && col.b == 0) // Appliquer la couleur de base si au moins une lumière atteint l'objet
+							col = AddColor(col, intersectedObject.color);
 
-				//printf("%d \n", canTouchLight.empty);
+						// SI C'EST UNE LUMIERE NORMALE
+						if (strcmp(scene.light[i].type, "nor") == 0) {
+							col = ApplyLightEffect(col, 4 * getLightIntensity(ray2.direction, normale));
+						}
 
-				if (canTouchLight.empty == 1) { // Si le rayon entre l'obj touché et la lumière n'est pas coupé
-					if (strcmp(intersectedObject.type, "sph") == 0)
-						col =
-						col = ApplyLightEffect(col, 4 * getLightIntensity(ray2.direction, normale));
-						//col = AddColor(col, getLightIntensity2(ray, normale));
-					pixelColor.r = col.r;
-					pixelColor.g = col.g;
-					pixelColor.b = col.b;
-				} else {
-					pixelColor.r = 0;
-					pixelColor.g = 0;
-					pixelColor.b = 0;
+						// SI C'EST UNE LUMIERE SPECULAIRE
+						if (strcmp(scene.light[i].type, "spe") == 0) {
+
+						}
+
+						// SI C'EST UNE LUMIERE QUI FAIT LES DEUX
+						if (strcmp(scene.light[i].type, "all") == 0) {
+							col = ApplyLightEffect(col, 4 * getLightIntensity(ray2.direction, normale));
+						}
+					}
 				}
+				pixelColor.r = col.r;
+				pixelColor.g = col.g;
+				pixelColor.b = col.b;
 			}
+			// --------------------------------------------------------- AFFICHER UN BACKGROUND
 			else {
 				int c = 127 * cos(ray.direction.y * 100 / 360) + 127;
-				//printf("%d\n", c);
 				pixelColor.r = 0;
 				pixelColor.g = 0;
 				pixelColor.b = (int) c;
