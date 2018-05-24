@@ -9,6 +9,7 @@ typedef struct light {
 	Vector3 position;
 	Color color;
 	int intensity;
+	char type[4];
 } Light;
 
 float getLightIntensity(Vector3 L, Vector3 normal);
