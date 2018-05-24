@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+function AddSphere($posX, $posY, $posZ, $radius, $colR, $colG, $colB){
+	$_SESSION['objList'][] = "sph;" . $posX . ";" . $posY . ";" . $posZ . ";" . $radius . ";" . $colR . ";" . $colG . ";" . $colB . "\n";
+}
+function AddLight($type, $posX, $posY, $posZ){
+	$_SESSION['lightList'][] = $type. ";" . $posX . ";" . $posY . ";" . $posZ . "\n";
+}
+
 if(isset($_POST['submit'])){
 	$_SESSION['camPosX'] = $_POST['camPosX'];
 	$_SESSION['camPosY'] = $_POST['camPosY'];
@@ -9,17 +17,14 @@ if(isset($_POST['submit'])){
 	$_SESSION['camOY'] = $_POST['camOY'];
 	$_SESSION['camOZ'] = $_POST['camOZ'];
 
-	$_SESSION['addLight'] = $_POST['addLight'];
-	$_SESSION['lightPosX'] = $_POST['lightPosX'];
-	$_SESSION['lightPosY'] = $_POST['lightPosY'];
-	$_SESSION['lightPosZ'] = $_POST['lightPosZ'];
-
 	$_SESSION['width'] = $_POST['width'];
 	$_SESSION['height'] = $_POST['height'];
 	$_SESSION['frames'] = $_POST['frames'];
 
 	if(!isset($_SESSION['objCount']))
 		$_SESSION['objCount'] = 0;
+	if(!isset($_SESSION['lightCount']))
+		$_SESSION['lightCount'] = 0;
 }
 
 if(isset($_POST['submitSphere'])){
@@ -27,9 +32,12 @@ if(isset($_POST['submitSphere'])){
 		$_SESSION['objCount'] = count($_SESSION['objList'])+1;
 }
 
-function AddSphere($posX, $posY, $posZ, $radius, $colR, $colG, $colB){
-	$_SESSION['objList'][] = "sph;" . $posX . ";" . $posY . ";" . $posZ . ";" . $radius . ";" . $colR . ";" . $colG . ";" . $colB . "\n";
+if(isset($_POST['submitLight'])){
+		AddLight($_POST['type'], $_POST['posLumX'], $_POST['posLumY'], $_POST['posLumZ']);
+		$_SESSION['lightCount'] = count($_SESSION['lightList'])+1;
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +54,17 @@ function AddSphere($posX, $posY, $posZ, $radius, $colR, $colG, $colB){
 			<?php
 				for($i = 0; $i < $_SESSION['objCount']; $i++){
 					if(!empty($_SESSION['objList'][$i])){
-						echo $_SESSION['objList'][$i] . "<form action=\"./removeObj.php\" method=\"post\"><input type=\"hidden\" name=\"index\" value=\"" . $i . "\"><input type=\"submit\" name=\"submit\" value=\"Supprimer l'objet\"></form>";
+						echo $_SESSION['objList'][$i] . "<form action=\"./removeObj.php\" method=\"post\"><input type=\"hidden\" name=\"index\" value=\"" . $i . "\"><input type=\"submit\" name=\"submit\" value=\"Supprimer l'objet\"></form>". "<br>";
+					}
+				}
+			?>
+		</fieldset><br>
+		<fieldset>
+			<legend>Source(s) lumineuse(s)</legend>
+			<?php
+				for($i = 0; $i < $_SESSION['lightCount']; $i++){
+					if(!empty($_SESSION['lightList'][$i])){
+						echo $_SESSION['lightList'][$i] . "<form action=\"./removeLight.php\" method=\"post\"><input type=\"hidden\" name=\"index\" value=\"" . $i . "\"><input type=\"submit\" name=\"submit\" value=\"Supprimer la source\"></form>" . "<br>";
 					}
 				}
 			?>
@@ -55,15 +73,28 @@ function AddSphere($posX, $posY, $posZ, $radius, $colR, $colG, $colB){
 
 		<form action="./process.php" method="post">
 			<fieldset>
+				<legend>Ajouter une source lumineuse</legend>
+				<label for="type">Type de source</label><br />
+				<select name="type" id="pays">
+						<option value="spe">Speculaire</option>
+						<option value="nor">Normale</option>
+						<option value="all">Tout</option>
+				</select>
+				Position de la source :
+				<input type="number" name="posLumX" value="-5" min="-1000" max="1000" required> <input type="number" name="posLumY" value="10" min="-1000" max="1000" required> <input type="number" name="posLumZ" value="10" min="-1000" max="1000" required><br><br>
+				<div class="submit"><input type="submit" name="submitLight" value="Ajouter une source lumineuse"></div>
+			</fieldset><br>
+			<fieldset>
 				<legend>Ajouter une Sphère</legend>
-				Position de la sphère : 
+				Position de la sphère :
 				<input type="number" name="posX" value="0" min="-1000" max="1000" required> <input type="number" name="posY" value="2" min="-1000" max="1000" required> <input type="number" name="posZ" value="10" min="-1000" max="1000" required><br><br>
 				Rayon : <input type="number" name="radius" value="2" min=".5" max="50" step="0.5" required><br>
-				<br>Couleur (RGB) : 
+				<br>Couleur (RGB) :
 				<input type="number" name="colR" value="0" min="-0" max="255" required> <input type="number" name="colG" value="2" min="-0" max="255" required> <input type="number" name="colB" value="10" min="-0" max="255" required>
 
 				<div class="submit"><input type="submit" name="submitSphere" value="Ajouter une sphère"></div>
 			</fieldset>
+			<br>
 		</form>
 
 		<form action="./process2.php" method="post"><input type="submit" name="submit" value="Afficher le Rendu"></form>

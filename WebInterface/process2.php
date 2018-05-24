@@ -1,21 +1,5 @@
 <?php
 session_start();
-/* Créer le fichier contenant les données stockées en session et lancer le script puis rediriger vers result */
-
-/*if(isset($_POST['submit'])){
-	$_SESSION['objX'] = $_POST['objX'];
-	$_SESSION['objY'] = $_POST['objY'];
-	$_SESSION['objZ'] = $_POST['objZ'];
-
-	$_SESSION['objSX'] = $_POST['objSX'];
-	$_SESSION['objSY'] = $_POST['objSY'];
-	$_SESSION['objSZ'] = $_POST['objSZ'];
-	$_SESSION['objType'] = $_POST['objType'];
-
-	$_SESSION['colorR'] = $_POST['colorR'];
-	$_SESSION['colorG'] = $_POST['colorG'];
-	$_SESSION['colorB'] = $_POST['colorB'];
-}*/
 
 if($_SESSION['frames'] < 2){
 	createFile();
@@ -46,9 +30,13 @@ function createFile(){
 	$current = "";
 	$current .= $_SESSION['camPosX'] . ";" . $_SESSION['camPosY'] . ";" . $_SESSION['camPosZ'] . "\n";
 	$current .= $_SESSION['camPosX'] . ";" . $_SESSION['camPosY'] . ";" . $_SESSION['camPosZ'] . "\n";
-	$current .= $_SESSION['addLight'] . ";" . $_SESSION['lightPosX'] . ";" . $_SESSION['lightPosY'] . ";" . $_SESSION['lightPosZ'] . "\n";
 	$current .= $_SESSION['width'] . "\n";
 	$current .= $_SESSION['height'] . "\n";
+	$current .= countArr($_SESSION['lightList']) . "\n";
+	for($i = 0; $i < $_SESSION['lightCount']; $i++){
+		if(!empty($_SESSION['lightList'][$i]))
+			$current .= $_SESSION['lightList'][$i];
+	}
 	$current .= countArr($_SESSION['objList']) . "\n";
 	//$current .= $_SESSION['objX'] . ";" . $_SESSION['objY'] . ";" . $_SESSION['objZ'] . ";" . $_SESSION['objSX'] . ";" . $_SESSION['objSY'] . ";" . $_SESSION['objSZ'] . ";" . $_SESSION['colorR'] . ";" . $_SESSION['colorG'] . ";" . $_SESSION['colorB'] . ";" . $_SESSION['objType'] . "\n";
 
