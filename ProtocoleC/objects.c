@@ -4,6 +4,41 @@
 #include "objects.h"
 #include "ray.h"
 
+Vector3 checkPolygone(Ray ray, int nbPts, Vector3 * pts){
+	Vector3 inter;
+	if(nbPts == 3){
+		inter = intersect(ray, pts[0], pts[1], , pts[2]);
+		if(inter.empty == 0){
+			return inter;
+		}
+	}
+	else if(nbPts == 4){
+		intersect(ray, pts[0], pts[1], , pts[2]);
+		if(inter.empty == 0){
+			return inter;
+		}
+		intersect(ray, pts[0], pts[2], , pts[3]);
+		if(inter.empty == 0){
+			return inter;
+		}
+	}
+	else if(nbPts == 5){
+		intersect(ray, pts[0], pts[1], , pts[2]);
+		if(inter.empty == 0){
+			return inter;
+		}
+		intersect(ray, pts[0], pts[2], , pts[4]);
+		if(inter.empty == 0){
+			return inter;
+		}
+		intersect(ray, pts[2], pts[3], , pts[4]);
+		if(inter.empty == 0){
+			return inter;
+		}
+	}
+	return inter;
+}
+
 Vector3 CollideWithPlan(Ray ray, Vector3 normale, Vector3 center, Vector3 size) {
 	Vector3 inter = { 0,0,0,1 };
 	//ray.position = normalizeVector(ray.position);
