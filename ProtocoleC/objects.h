@@ -5,15 +5,19 @@
 #include "ray.h"
 #include "color.h"
 
+typedef struct poly {
+	Vector3 * pts;
+	int nbPts;
+} Poly;
+
 typedef struct object {
 	Vector3 position;
-	
+
 	// Specific to SPHERE
 	double radius;
 
 	// Specific to CUBE & PLAN
-	Vector3 size;
-	Vector3 normale;
+	Poly poly;
 
 	Color color;
 	char type[4];
