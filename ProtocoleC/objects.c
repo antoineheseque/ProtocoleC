@@ -73,3 +73,16 @@ Vector3 CollideWithSphere(Ray ray, Vector3 orig, int radius){
 	inter.empty = 0;
 	return inter;
 }
+
+/*int coplanar(Vector3 a, Vector3 b, Vector3 c){
+	int result;
+
+	result = (a.x * b.y * c.z) + (b.x * c.y * a.z) + (c.x * a.y * b.z) - (b.x * a.y * c.x) - (a.x * c.y * b.z) - (c.x * b.y * a.z);
+
+	if(result = 0){
+		return 1;
+	} 
+	else{
+		return 0;
+	}
+}*/
