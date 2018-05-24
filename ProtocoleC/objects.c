@@ -129,8 +129,10 @@ int coplanar(Vector3 a, Vector3 b, Vector3 c){
 Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 
 	Vector3 inter;
-	double area;
+	double area, area1, area2, area3, areaTot;
 	double ab,bc,ca;
+	double p, p1, p2, p3;
+	double X, Y, Z;
 	//calcul de l'équation de la droite de la forme ax + by + cz + d = 0
 	double a = (v2.y - v1.y)*(v3.z - v1.z)-(v2.z - v1.z)*(v3.y - v1.y);
 	double b = (v2.z - v1.z)*(v3.x - v1.x)-(v2.x - v1.x)*(v3.z - v1.z);
@@ -144,23 +146,49 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 		inter.z = ray.position.z + ray.direction.z * t;
 
 		//calcul de la longueur des cotés
-		ab = DistVector(v1,v2);
-		bc = DistVector(v2,v3);
-		ca = DistVector(v3,v1);
+		ab = DistVector(v1, v2);
+		bc = DistVector(v2, v3);
+		ca = DistVector(v3, v1);
 
 		//calcul de l'aire totale du triangle
 		area = sqrt( ((ab + bc + ca)/2) * ((-ab + bc + ca)/2) * ((ab - bc + ca)/2) * ((ab + bc - ca)/2) );
 
+		//calcul du demi périmétre
+		p = (ab + bc + ca)/2;
 
+		//calcul des normes entre les sommets et le point I
+		X = DistVector(v1, inter);
+		Y = DistVector(v2, inter);
+		Z = DistVector(v3, inter);
 
+		//calcul du demi périmétre des sous divisions
+		p1 = (X + Y + ab)/2;
+		p2 = (Z + Y + bc)/2;
+		p3 = (Z + X + ca)/2;
 
-	}
+		//calcul des aires des sous divisions
+		area1 = sqrt(p1 * (p1 - X) * (p1 - Y) * (p1 - ab));
+		area2 = sqrt(p2 * (p2 - Z) * (p2 - Y) * (p2 - bc));
+		area3 = sqrt(p3 * (p3 - Z) * (p3 - X) * (p3 - ca));
+
+		//on additionne les aires des 3 sous divisions
+		areaTot = area1 + area2 + area3;
+
+		if (areaTot == area){ //si la somme des aire des 3 sous divisions est égale à l'aire du triangle le point d'intersection est bien dans le triangle
+			
+			return 1;
+
+		}
+
+		else{
+			return 0;
+		}
+
+		}
 
 	else{
 
 		//si le t est inférieur à 0 on retourne 1
 		inter.empty = 1;
 	}
-	return(inter);
-
 }
