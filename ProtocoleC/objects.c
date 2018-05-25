@@ -104,6 +104,7 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 	double ab,bc,ca;
 	double p, p1, p2, p3;
 	double X, Y, Z;
+	
 	//calcul de l'équation de la droite de la forme ax + by + cz + d = 0
 	double a = (v2.y - v1.y)*(v3.z - v1.z)-(v2.z - v1.z)*(v3.y - v1.y);
 	double b = (v2.z - v1.z)*(v3.x - v1.x)-(v2.x - v1.x)*(v3.z - v1.z);
@@ -112,8 +113,8 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 
 	if (t >= 0){ //il y a intersection entre le rayon et le plan
 		//coordonnées du point d'intersection
-		inter.x = ray.position.y + ray.direction.y * t;
-		inter.y = ray.position.x + ray.direction.x * t;
+		inter.x = ray.position.x + ray.direction.x * t;
+		inter.y = ray.position.y + ray.direction.y * t;
 		inter.z = ray.position.z + ray.direction.z * t;
 
 		printf("%.2f %.2f %.2f\n", inter.x, inter.y, inter.z);
