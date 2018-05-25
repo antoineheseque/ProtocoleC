@@ -35,8 +35,13 @@ int main(int argc, char *argv[]) {
 			for (int i = 0; i < scene.objectsCount; i++) { // Pour tout les objets de la scène
 				Vector3 tempIntersect = { 0, 0, 0, 1 };
 				Object tempObj;
+
 				if (strcmp(scene.object[i].type, "sph") == 0) { // Si l'objet est une sphere
 					tempIntersect = CollideWithSphere(ray, scene.object[i].position, scene.object[i].radius);
+					tempObj = scene.object[i];
+				}
+				if (strcmp(scene.object[i].type, "pol") == 0) { // Si l'objet est une sphere
+					tempIntersect = checkPolygone(ray, scene.object[i].poly.nbPts, scene.object[i].poly.pts);
 					tempObj = scene.object[i];
 				}
 				if (strcmp(scene.object[i].type, "gro") == 0) { // Si l'objet est un sol

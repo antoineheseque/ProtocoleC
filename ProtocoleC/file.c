@@ -49,9 +49,11 @@ Scene readFile() {
 			fscanf(fichier, "%3s;%lf;%lf;%lf;%lf", &light[i].type, &light[i].intensity, &light[i].position.x, &light[i].position.y, &light[i].position.z);
 		}
 		fscanf(fichier, "%d", &nbObjects);
-		for(int i = 1; i <= nbObjects; i++){
+		nbObjects++; // Ajout du plan défini au dessus
+		for(int i = 1; i < nbObjects; i++){
 			objects = realloc(objects, sizeof(Object) * (i+2));
 			fscanf(fichier, "%3s", &objects[i].type);
+
 			if (strcmp(objects[i].type, "sph") == 0) {
 				fscanf(fichier, ";%lf;%lf;%lf;%lf;%d;%d;%d", &objects[i].position.x, &objects[i].position.y, &objects[i].position.z, &objects[i].radius, &objects[i].color.r, &objects[i].color.g, &objects[i].color.b);
 			}

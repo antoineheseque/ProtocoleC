@@ -99,7 +99,6 @@ int coplanar(Vector3 a, Vector3 b, Vector3 c){
 }
 
 Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
-
 	Vector3 inter = { 0,0,0,1 };
 	double area, area1, area2, area3, areaTot;
 	double ab,bc,ca;
@@ -117,6 +116,8 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 		inter.y = ray.position.x + ray.direction.x * t;
 		inter.z = ray.position.z + ray.direction.z * t;
 
+		printf("%.2f %.2f %.2f\n", inter.x, inter.y, inter.z);
+
 		//calcul de la longueur des cotés
 		ab = DistVector(v1, v2);
 		bc = DistVector(v2, v3);
@@ -133,6 +134,9 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 		Y = DistVector(v2, inter);
 		Z = DistVector(v3, inter);
 
+		//printf("%.2f %.2f %.2f\n", X, Y, Z);
+
+
 		//calcul du demi périmétre des sous divisions
 		p1 = (X + Y + ab)/2;
 		p2 = (Z + Y + bc)/2;
@@ -146,8 +150,11 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 		//on additionne les aires des 3 sous divisions
 		areaTot = area1 + area2 + area3;
 
+		//printf("%.2f %.2f %.2f\n", p1 * (p1 - X) * (p1 - Y) * (p1 - ab), p2 * (p2 - Z) * (p2 - Y) * (p2 - bc), p3 * (p3 - Z) * (p3 - X) * (p3 - ca));
+
 		if (areaTot == area){ //si la somme des aire des 3 sous divisions est égale à l'aire du triangle le point d'intersection est bien dans le triangle
 			inter.empty = 0;
+			printf("played");
 		}
 	}
 

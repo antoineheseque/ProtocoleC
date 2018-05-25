@@ -1,4 +1,9 @@
-﻿  light.c
-d:\documents\protocolec\protocolec\light.c(8): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-d:\documents\protocolec\protocolec\light.c(14): warning C4101: 'V' : variable locale non référencée
+﻿  objects.c
+d:\documents\protocolec\protocolec\objects.c(58): warning C4101: 'diff' : variable locale non référencée
+d:\documents\protocolec\protocolec\objects.c(75): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+d:\documents\protocolec\protocolec\objects.c(91): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+  camera.c
+  Génération de code en cours...
+d:\documents\protocolec\protocolec\objects.c(43): warning C4701: variable locale 'inter' potentiellement non initialisée utilisée
+d:\documents\protocolec\protocolec\objects.c(93): warning C4706: assignation au sein d'une expression conditionnelle
   ProtocoleC.vcxproj -> D:\Documents\ProtocoleC\ProtocoleC\x64\Debug\ProtocoleC.exe
