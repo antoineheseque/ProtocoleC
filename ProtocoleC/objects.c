@@ -109,7 +109,8 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 	double a = (v2.y - v1.y)*(v3.z - v1.z)-(v2.z - v1.z)*(v3.y - v1.y);
 	double b = (v2.z - v1.z)*(v3.x - v1.x)-(v2.x - v1.x)*(v3.z - v1.z);
 	double c = (v2.x - v1.x)*(v3.y - v1.y)-(v2.y - v1.y)*(v3.x - v1.x);
-	double t = (-a * ray.position.x - b * ray.position.y - c * ray.position.z) / (ray.direction.x * a + ray.direction.y * b + ray.direction.y * c);
+	double d = -(v1.x * a) - (v1.y * b) - (v1.z * c);
+	double t = (-a * ray.position.x - b * ray.position.y - c * ray.position.z - d) / (ray.direction.x * a + ray.direction.y * b + ray.direction.y * c);
 
 	if (t >= 0){ //il y a intersection entre le rayon et le plan
 		//coordonnées du point d'intersection
