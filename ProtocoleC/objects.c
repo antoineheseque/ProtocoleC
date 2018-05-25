@@ -105,6 +105,8 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 	double p, p1, p2, p3;
 	double X, Y, Z;
 	
+	//printf("%.2f %.2f %.2f\n", v1.x, v2.x, v3.x);
+
 	//calcul de l'équation de la droite de la forme ax + by + cz + d = 0
 	double a = (v2.y - v1.y)*(v3.z - v1.z)-(v2.z - v1.z)*(v3.y - v1.y);
 	double b = (v2.z - v1.z)*(v3.x - v1.x)-(v2.x - v1.x)*(v3.z - v1.z);
@@ -118,7 +120,7 @@ Vector3 intersect(Ray ray, Vector3 v1, Vector3 v2, Vector3 v3){
 		inter.y = ray.position.y + ray.direction.y * t;
 		inter.z = ray.position.z + ray.direction.z * t;
 
-		printf("%.2f %.2f %.2f\n", inter.x, inter.y, inter.z);
+		//printf("%.2f %.2f %.2f\n", inter.x, inter.y, inter.z);
 
 		//calcul de la longueur des cotés
 		ab = DistVector(v1, v2);

@@ -7,16 +7,17 @@ if($_SESSION['frames'] < 2){
 	header("Location: result.php");
 }
 else{
-	$_SESSION['lightPosX'] -= round($_SESSION['frames']);
+	$_SESSION['camPosX'] -= round($_SESSION['frames']) / 2;
 	for($i = 0; $i < $_SESSION['frames']; $i++){
 		createFile();
 		set_time_limit (10);
 		exec("ProtocoleC.exe img/result" . $i);
-		$_SESSION['lightPosX'] += 2;
+		$_SESSION['camPosX'] += 1;
+		$_SESSION['camPosZ'] = ($_SESSION['camPosX']*$_SESSION['camPosX'])/15;
 	}
 	if(file_exists("result.mp4"))
 		unlink("result.mp4");
-	exec("ffmpeg.exe -f image2 -i img/result%d.bmp  -b 1500k -vcodec libx264 -g 30 -filter:v \"setpts=2.0*PTS\" result.mp4");
+	exec("ffmpeg.exe -f image2 -i img/result%d.bmp  -b 1500k -vcodec libx264 -g 30 -filter:v \"setpts=4.0*PTS\" result.mp4");
 	for($i = 0; $i < $_SESSION['frames']; $i++){
 		unlink("img/result" . $i . ".bmp");
 	}

@@ -11,7 +11,7 @@ float getLightIntensity(Vector3 L, Vector3 normal) {
 }
 
 int getLightIntensity2(Ray ray, Vector3 normale) {
-	Vector3 V = InvertVector(ray.direction);
+	//Vector3 V = InvertVector(ray.direction);
 	Vector3 L = ray.direction;
 
 	int val = 0;

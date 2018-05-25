@@ -3,6 +3,7 @@ session_start();
 
 function AddSphere($posX, $posY, $posZ, $radius, $colR, $colG, $colB){
 	$_SESSION['objList'][] = "sph;" . $posX . ";" . $posY . ";" . $posZ . ";" . $radius . ";" . $colR . ";" . $colG . ";" . $colB . "\n";
+	$_SESSION['objCount'] = count($_SESSION['objList'])+1;
 }
 function AddTriangle($posXa, $posYa, $posZa, $posXb, $posYb, $posZb, $posXc, $posYc, $posZc, $colR, $colG, $colB){
 	$_SESSION['objList'][] = "tri;" . $posXa . ";" . $posYa . ";" . $posZa . ";". $posXb . ";" . $posYb . ";" . $posZb . ";". $posXc . ";" . $posYc . ";" . $posZc . ";" . $colR . ";" . $colG . ";" . $colB . "\n";
@@ -12,6 +13,7 @@ function AddQuadri($posXa, $posYa, $posZa, $posXb, $posYb, $posZb, $posXc, $posY
 }
 function AddLight($type, $intensity, $posX, $posY, $posZ){
 	$_SESSION['lightList'][] = $type . ";" . $intensity . ";" . $posX . ";" . $posY . ";" . $posZ . "\n";
+	$_SESSION['lightCount'] = count($_SESSION['lightList'])+1;
 }
 
 if(isset($_POST['submit'])){
@@ -31,11 +33,19 @@ if(isset($_POST['submit'])){
 		$_SESSION['objCount'] = 0;
 	if(!isset($_SESSION['lightCount']))
 		$_SESSION['lightCount'] = 0;
+
+	if(empty($_SESSION['lightList'])){
+		AddLight("all", 2, 5, 20, 10);
+		AddLight("nor", 1, 0, 0, 0);
+		AddSphere(3,2,12,2,150,0,0);
+		AddSphere(-10,1,20,1,0,150,0);
+		AddSphere(0,2.3,10,2,0,0,150);
+		header("Location: process.php");
+	}
 }
 
 if(isset($_POST['submitSphere'])){
 		AddSphere($_POST['posX'], $_POST['posY'], $_POST['posZ'], $_POST['radius'], $_POST['colR'], $_POST['colG'], $_POST['colB']);
-		$_SESSION['objCount'] = count($_SESSION['objList'])+1;
 }
 
 if(isset($_POST['submitTriangle'])){
@@ -50,7 +60,6 @@ if(isset($_POST['submitQuadri'])){
 
 if(isset($_POST['submitLight'])){
 		AddLight($_POST['type'], $_POST['intensity'] , $_POST['posLumX'], $_POST['posLumY'], $_POST['posLumZ']);
-		$_SESSION['lightCount'] = count($_SESSION['lightList'])+1;
 }
 
 
@@ -86,7 +95,7 @@ if(isset($_POST['submitLight'])){
 			?>
 		</fieldset>
 		<br>
-
+		<embed src="waiting.mp3" autostart="true" loop="false" hidden="true"></embed>
 		<form action="./process.php" method="post">
 			<fieldset>
 				<legend>Ajouter une source lumineuse</legend>
@@ -112,7 +121,7 @@ if(isset($_POST['submitLight'])){
 
 				<div class="submit"><input type="submit" name="submitSphere" value="Ajouter une sphère"></div>
 			</fieldset><br>
-			<fieldset>
+			<!--<fieldset>
 				<legend>Ajouter un Triangle</legend>
 				Position du point n°1 du triangle :
 				<input type="number" name="posTriXa" value="0" min="-1000" max="1000" required> <input type="number" name="posTriYa" value="2" min="-1000" max="1000" required> <input type="number" name="posTriZa" value="10" min="-1000" max="1000" required><br><br>
@@ -138,7 +147,7 @@ if(isset($_POST['submitLight'])){
 				<input type="number" name="colQuadR" value="0" min="-0" max="255" required> <input type="number" name="colQuadG" value="2" min="-0" max="255" required> <input type="number" name="colQuadB" value="10" min="-0" max="255" required>
 
 				<div class="submit"><input type="submit" name="submitQuadri" value="Ajouter un quadrilatère"></div>
-			</fieldset>
+			</fieldset>-->
 			<br>
 		</form>
 
